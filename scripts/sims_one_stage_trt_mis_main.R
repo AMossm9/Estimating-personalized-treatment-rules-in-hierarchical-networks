@@ -1,6 +1,6 @@
 #**********MAIN FILE: RUN DWOLS FOR WITHIN- AND BETWEEN-GROUP INTERFERENCE: ONE-STAGE SETTING**********
 
-source("C:/Users/am/Documents/PhDYear2/ResearchCodeProject1/simsOneStageTrtMisspecified.R") 
+source(here::here("scripts", "sims_one_stage_trt_mis.R")) 
 
 run <- 1000
 n <- 50
@@ -112,20 +112,24 @@ Max.Alters <- bp_list$Max.Alters
 Mean.Alters <- bp_list$Mean.Alters
 Median.Alters <- bp_list$Median.Alters
 
-write.csv(AOpts.df, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/AOpts_TrtMis_samsize50n50.csv")
-write.csv(YOpts.df, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/YOpts_TrtMis_samsize50n50.csv")
-write.csv(Psi.Dw, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/PsiDw_TrtMis_samsize50n50.csv")
-write.csv(Psi.M1, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/PsiM1_TrtMis_samsize50n50.csv")
-write.csv(Psi.M2, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/PsiM2_TrtMis_samsize50n50.csv")
-write.csv(Psi.M3, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/PsiM3_TrtMis_samsize50n50.csv")
-write.csv(Xsi.Dw, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/XsiDw_TrtMis_samsize50n50.csv")
-write.csv(Xsi.M1, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/XsiM1_TrtMis_samsize50n50.csv")
-write.csv(Xsi.M2, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/XsiM2_TrtMis_samsize50n50.csv")
-write.csv(Xsi.M3, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/XsiM3_TrtMis_samsize50n50.csv")
-write.csv(Min.Alters, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/MinAlters_TrtMis_samsize50n50.csv")
-write.csv(Max.Alters, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/MaxAlters_TrtMis_samsize50n50.csv")
-write.csv(Mean.Alters, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/MeanAlters_TrtMis_samsize50n50.csv")
-write.csv(Median.Alters, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/MedianAlters_TrtMis_samsize50n50.csv")
+outputs <- list(
+  AOpts_one_trt_mis <- AOpts.df,
+  YOpts_one_trt_mis <- YOpts.df,
+  Psi_Dw_one_trt_mis <- Psi.Dw,
+  Psi_M1_one_trt_mis <- Psi.M1,
+  Psi_M2_one_trt_mis <- Psi.M2,
+  Psi_M3_one_trt_mis <- Psi.M3,
+  Xsi_Dw_one_trt_mis <- Xsi.Dw,
+  Xsi_M1_one_trt_mis <- Xsi.M1,
+  Xsi_M2_one_trt_mis <- Xsi.M2,
+  Xsi_M3_one_trt_mis <- Xsi.M3,
+  Min_alters_one_trt_mis <- Min.Alters,
+  Max_alters_one_trt_mis <- Max.Alters,
+  Mean_alters_one_trt_mis <- Mean.Alters,
+  Median_alters_one_trt_mis <- Median.Alters
+)
+
+saveRDS(outputs, "results/one_stage_trt_mis.rds")
 
 bp.trt <- ggplot(AOpts.df, aes(x=phys.grps, y=TrtRate, fill=Method)) + geom_boxplot()
 bp.out <- ggplot(YOpts.df, aes(x=phys.grps, y=Outcome, fill=Method)) + geom_boxplot()
