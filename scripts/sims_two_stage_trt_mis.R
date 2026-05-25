@@ -1089,6 +1089,19 @@ for (p in p.list) {
   cat('count ', count, ' done\n')
 }
 
+outputs <- list(
+  TwoStage_results_both_trt_mis <- Results.both,
+  TwoStage_results_both__resc_trt_mis <- Results.both.resc,
+  TwoStage_results_wthn_trt_mis <- Results.wthn,
+  TwoStage_results_standard_trt_mis <- Results.standard,
+  TwoStage_min_num_trt_mis <- Min.Num.Alters,
+  TwoStage_max_num_trt_mis <- Max.Num.Alters,
+  TwoStage_mean_num_trt_mis <- Mean.Num.Alters,
+  TwoStage_median_num_trt_mis <- Median.Num.Alters
+)
+
+saveRDS(outputs, "results/sims_two_stage_trt_mis.rds")
+
 write.csv(Results.both, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/TwoStage_Res_both_TrtMis_samsize50n50.csv")
 write.csv(Results.both.resc, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/TwoStage_Res_bothresc_TrtMis_samsize50n50.csv")
 write.csv(Results.wthn, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/TwoStage_Res_wthn_TrtMis_samsize50n50.csv")
