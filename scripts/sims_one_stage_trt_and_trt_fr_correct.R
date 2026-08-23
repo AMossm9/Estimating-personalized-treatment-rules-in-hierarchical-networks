@@ -715,7 +715,7 @@ dwols_mod_3 <- function(data.sim, data.test, I, J, n) {
 #SIMULATIONS START HERE
 Sims <- function(I, J, n, sam.size, tau3, tau2, sigma2, alpha.0, alpha.1, alpha.2, psi.0, psi.1, psi.2, psi.3, run, model) {
   #Storage for results
-  Res <- data.frame(OPT = double(), DWOL = double(), DWOLI = double(), DWOLII = double(), DWOLIII = double(), YOPT = double(), YDWOL = double(), YDWOLI = double(), YDWOLII = double(), YDWOLIII = double(), YADWOL = double(), YADWOLI = double(), YADWOLII = double(), YADWOLIII = double(), REGRETDWOL = double(), REGRETDWOLI = double(), REGRETDWOLII = double(), REGRETDWOLIII = double(),)
+  Res <- data.frame(OPT = double(), DWOL = double(), DWOLI = double(), DWOLII = double(), DWOLIII = double(), YOPT = double(), YDWOL = double(), YDWOLI = double(), YDWOLII = double(), YDWOLIII = double(), YADWOL = double(), YADWOLI = double(), YADWOLII = double(), YADWOLIII = double(), REGRETDWOL = double(), REGRETDWOLI = double(), REGRETDWOLII = double(), REGRETDWOLIII = double())
 
   Min.Num.Alters <- c()
   Max.Num.Alters <- c()
