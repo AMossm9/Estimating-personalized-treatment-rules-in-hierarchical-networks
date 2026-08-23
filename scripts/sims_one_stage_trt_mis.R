@@ -582,6 +582,9 @@ dwols <- function(data.sim, data.test, I, J, n) {
   #Optimal outcome
   Y.opt <- data.test$Y.ijk + (Aopt.dwols - data.test$A.ijk)*(psi.0.hat + psi.1.hat*data.test$X.ijk + psi.2.hat*data.test$total.w + psi.3.hat*data.test$V.i*data.test$total.w)
   
+  #Regret
+  regret <- (Aopt.dwols - data.test$A.ijk)*(psi.0.hat + psi.1.hat*data.test$X.ijk + psi.2.hat*data.test$total.w + psi.3.hat*data.test$V.i*data.test$total.w)
+
   #E[Y|A = Aopt.dwols]
   #Optimal treatment based on what we observe in given dataset
   Aopt.dwols.obs <- as.numeric((psi.0.hat + psi.1.hat*data.sim$X.ijk + psi.2.hat*data.sim$total.w + psi.3.hat*data.sim$V.i*data.sim$total.w) > 0)
@@ -590,7 +593,7 @@ dwols <- function(data.sim, data.test, I, J, n) {
   #treatment for our given dataset
   Y.agree <- mean(data.sim$Y.ijk[data.sim$A.ijk == Aopt.dwols.obs])
   
-  return(data.frame(mean(Aopt.dwols == data.test$AOpt.ijk), mean(Y.opt), mean(Y.agree), psi.0.hat, psi.1.hat, psi.2.hat, psi.3.hat, xsi.0.hat, xsi.1.hat))
+  return(data.frame(mean(Aopt.dwols == data.test$AOpt.ijk), mean(Y.opt), mean(Y.agree), psi.0.hat, psi.1.hat, psi.2.hat, psi.3.hat, xsi.0.hat, xsi.1.hat, regret))
 }
 
 #METHOD #2: ACCOUNTS FOR WITHIN- AND BETWEEN-GROUP INTERFERENCE, USES STANDARD INDIVIDUAL WEIGHTS
@@ -617,6 +620,9 @@ dwols_mod_1 <- function(data.sim, data.test, I, J, n) {
   #Optimal outcome
   Y.opt <- data.test$Y.ijk + (Aopt.dwols - data.test$A.ijk)*(psi.0.hat + psi.1.hat*data.test$X.ijk + psi.2.hat*data.test$total.t + psi.3.hat*data.test$V.i*data.test$total.t)
   
+  #Regret
+  regret <- (Aopt.dwols - data.test$A.ijk)*(psi.0.hat + psi.1.hat*data.test$X.ijk + psi.2.hat*data.test$total.t + psi.3.hat*data.test$V.i*data.test$total.t)
+
   #E[Y|A = Aopt.dwols]
   #Optimal treatment based on what we observe in given dataset
   Aopt.dwols.obs <- as.numeric((psi.0.hat + psi.1.hat*data.sim$X.ijk + psi.2.hat*data.sim$total.t + psi.3.hat*data.sim$V.i*data.sim$total.t) > 0)
@@ -625,7 +631,7 @@ dwols_mod_1 <- function(data.sim, data.test, I, J, n) {
   #treatment for our given dataset
   Y.agree <- mean(data.sim$Y.ijk[data.sim$A.ijk == Aopt.dwols.obs])
   
-  return(data.frame(mean(Aopt.dwols == data.test$AOpt.ijk), mean(Y.opt), mean(Y.agree), psi.0.hat, psi.1.hat, psi.2.hat, psi.3.hat, xsi.0.hat, xsi.1.hat))
+  return(data.frame(mean(Aopt.dwols == data.test$AOpt.ijk), mean(Y.opt), mean(Y.agree), psi.0.hat, psi.1.hat, psi.2.hat, psi.3.hat, xsi.0.hat, xsi.1.hat, regret))
 }
 
 #METHOD #3: ACCOUNTS FOR WITHIN- AND BETWEEN-GROUP INTERFERENCE, USES NON-RESCALED NETWORK WEIGHTS FROM ALL NEIGHBOURS
@@ -652,6 +658,9 @@ dwols_mod_2 <- function(data.sim, data.test, I, J, n) {
   #Optimal outcome
   Y.opt <- data.test$Y.ijk + (Aopt.dwols - data.test$A.ijk)*(psi.0.hat + psi.1.hat*data.test$X.ijk + psi.2.hat*data.test$total.t + psi.3.hat*data.test$V.i*data.test$total.t)
   
+  #Regret
+  regret <- (Aopt.dwols - data.test$A.ijk)*(psi.0.hat + psi.1.hat*data.test$X.ijk + psi.2.hat*data.test$total.t + psi.3.hat*data.test$V.i*data.test$total.t)
+
   #E[Y|A = Aopt.dwols]
   #Optimal treatment based on what we observe in given dataset
   Aopt.dwols.obs <- as.numeric((psi.0.hat + psi.1.hat*data.sim$X.ijk + psi.2.hat*data.sim$total.t + psi.3.hat*data.sim$V.i*data.sim$total.t) > 0)
@@ -660,7 +669,7 @@ dwols_mod_2 <- function(data.sim, data.test, I, J, n) {
   #treatment for our given dataset
   Y.agree <- mean(data.sim$Y.ijk[data.sim$A.ijk == Aopt.dwols.obs])
   
-  return(data.frame(mean(Aopt.dwols == data.test$AOpt.ijk), mean(Y.opt), mean(Y.agree), psi.0.hat, psi.1.hat, psi.2.hat, psi.3.hat, xsi.0.hat, xsi.1.hat))
+  return(data.frame(mean(Aopt.dwols == data.test$AOpt.ijk), mean(Y.opt), mean(Y.agree), psi.0.hat, psi.1.hat, psi.2.hat, psi.3.hat, xsi.0.hat, xsi.1.hat, regret))
 }
 
 #METHOD #4: ACCOUNTS FOR WITHIN- AND BETWEEN-GROUP INTERFERENCE, USES RESCALED NETWORK WEIGHTS FROM ALL NEIGHBOURS
@@ -687,6 +696,9 @@ dwols_mod_3 <- function(data.sim, data.test, I, J, n) {
   #Optimal outcome
   Y.opt <- data.test$Y.ijk + (Aopt.dwols - data.test$A.ijk)*(psi.0.hat + psi.1.hat*data.test$X.ijk + psi.2.hat*data.test$total.t + psi.3.hat*data.test$V.i*data.test$total.t)
   
+  #Regret
+  regret <- (Aopt.dwols - data.test$A.ijk)*(psi.0.hat + psi.1.hat*data.test$X.ijk + psi.2.hat*data.test$total.t + psi.3.hat*data.test$V.i*data.test$total.t)
+
   #E[Y|A = Aopt.dwols]
   #Optimal treatment based on what we observe in given dataset
   Aopt.dwols.obs <- as.numeric((psi.0.hat + psi.1.hat*data.sim$X.ijk + psi.2.hat*data.sim$total.t + psi.3.hat*data.sim$V.i*data.sim$total.t) > 0)
@@ -695,14 +707,14 @@ dwols_mod_3 <- function(data.sim, data.test, I, J, n) {
   #treatment for our given dataset
   Y.agree <- mean(data.sim$Y.ijk[data.sim$A.ijk == Aopt.dwols.obs])
   
-  return(data.frame(mean(Aopt.dwols == data.test$AOpt.ijk), mean(Y.opt), mean(Y.agree), psi.0.hat, psi.1.hat, psi.2.hat, psi.3.hat, xsi.0.hat, xsi.1.hat))
+  return(data.frame(mean(Aopt.dwols == data.test$AOpt.ijk), mean(Y.opt), mean(Y.agree), psi.0.hat, psi.1.hat, psi.2.hat, psi.3.hat, xsi.0.hat, xsi.1.hat, regret))
 }
 
 #******************************************************************************************************************************
 #SIMULATIONS START HERE
 Sims <- function(I, J, n, sam.size, tau3, tau2, sigma2, alpha.0, alpha.1, alpha.2, psi.0, psi.1, psi.2, psi.3, run, model) {
   #Storage for results
-  Res <- data.frame(OPT = double(), DWOL = double(), DWOLI = double(), DWOLII = double(), DWOLIII = double(), YOPT = double(), YDWOL = double(), YDWOLI = double(), YDWOLII = double(), YDWOLIII = double(), YADWOL = double(), YADWOLI = double(), YADWOLII = double(), YADWOLIII = double())
+  Res <- data.frame(OPT = double(), DWOL = double(), DWOLI = double(), DWOLII = double(), DWOLIII = double(), YOPT = double(), YDWOL = double(), YDWOLI = double(), YDWOLII = double(), YDWOLIII = double(), YADWOL = double(), YADWOLI = double(), YADWOLII = double(), YADWOLIII = double(), REGRETDWOL = double(), REGRETDWOLI = double(), REGRETDWOLII = double(), REGRETDWOLIII = double())
 
   Min.Num.Alters <- c()
   Max.Num.Alters <- c()
@@ -788,6 +800,7 @@ Sims <- function(I, J, n, sam.size, tau3, tau2, sigma2, alpha.0, alpha.1, alpha.
     Aopt.dwols <- res.dwols[,1]
     Yopt.dwols <- res.dwols[,2]
     Yagree.dwols <- res.dwols[,3]
+    Regret.dwols <- res.dwols[,10]
 
     psi.0.dwols <- res.dwols[,4]
     psi.1.dwols <- res.dwols[,5]
@@ -800,6 +813,7 @@ Sims <- function(I, J, n, sam.size, tau3, tau2, sigma2, alpha.0, alpha.1, alpha.
     Aopt.dwols.mod.1 <- res.dwols.mod.1[,1]
     Yopt.dwols.mod.1 <- res.dwols.mod.1[,2]
     Yagree.dwols.mod.1 <- res.dwols.mod.1[,3]
+    Regret.dwols.mod.1 <- res.dwols.mod.1[,10]
 
     psi.0.dwols.mod.1 <- res.dwols.mod.1[,4]
     psi.1.dwols.mod.1 <- res.dwols.mod.1[,5]
@@ -813,6 +827,7 @@ Sims <- function(I, J, n, sam.size, tau3, tau2, sigma2, alpha.0, alpha.1, alpha.
     Aopt.dwols.mod.2 <- res.dwols.mod.2[,1]
     Yopt.dwols.mod.2 <- res.dwols.mod.2[,2]
     Yagree.dwols.mod.2 <- res.dwols.mod.2[,3]
+    Regret.dwols.mod.2 <- res.dwols.mod.2[,10]
 
     psi.0.dwols.mod.2 <- res.dwols.mod.2[,4]
     psi.1.dwols.mod.2 <- res.dwols.mod.2[,5]
@@ -825,6 +840,7 @@ Sims <- function(I, J, n, sam.size, tau3, tau2, sigma2, alpha.0, alpha.1, alpha.
     Aopt.dwols.mod.3 <- res.dwols.mod.3[,1]
     Yopt.dwols.mod.3 <- res.dwols.mod.3[,2]
     Yagree.dwols.mod.3 <- res.dwols.mod.3[,3]
+    Regret.dwols.mod.3 <- res.dwols.mod.3[,10]
 
     psi.0.dwols.mod.3 <- res.dwols.mod.3[,4]
     psi.1.dwols.mod.3 <- res.dwols.mod.3[,5]
@@ -839,7 +855,7 @@ Sims <- function(I, J, n, sam.size, tau3, tau2, sigma2, alpha.0, alpha.1, alpha.
     Yopt <- data.test$Y.ijk + (data.test$AOpt.ijk - data.test$A.ijk)*(psi.0 + psi.1*data.test$X.ijk + psi.2*data.test$total.t + psi.3*data.test$V.i*data.test$total.t)
     
     #Store results
-    Res[seed,] <- c(mean(data.sim$A.ijk == data.sim$AOpt.ijk), Aopt.dwols, Aopt.dwols.mod.1, Aopt.dwols.mod.2, Aopt.dwols.mod.3, mean(Yopt), Yopt.dwols, Yopt.dwols.mod.1, Yopt.dwols.mod.2, Yopt.dwols.mod.3, Yagree.dwols, Yagree.dwols.mod.1, Yagree.dwols.mod.2, Yagree.dwols.mod.3)
+    Res[seed,] <- c(mean(data.sim$A.ijk == data.sim$AOpt.ijk), Aopt.dwols, Aopt.dwols.mod.1, Aopt.dwols.mod.2, Aopt.dwols.mod.3, mean(Yopt), Yopt.dwols, Yopt.dwols.mod.1, Yopt.dwols.mod.2, Yopt.dwols.mod.3, Yagree.dwols, Yagree.dwols.mod.1, Yagree.dwols.mod.2, Yagree.dwols.mod.3, Regret.dwols, Regret.dwols.mod.1, Regret.dwols.mod.2, Regret.dwols.mod.3)
     Psi.0.Dwols <- c(Psi.0.Dwols, psi.0.dwols)
     Psi.1.Dwols <- c(Psi.1.Dwols, psi.1.dwols)
     Psi.2.Dwols <- c(Psi.2.Dwols, psi.2.dwols)
@@ -893,6 +909,7 @@ begin.Sims <- function(run, n, sam.size, a, b, c, tau3, tau2, sigma2, alpha.0, a
   A.Opts <- A.Opts.D <- A.Opts.1 <- A.Opts.2 <- A.Opts.3 <-  matrix(nrow = run, ncol = length(J.list))
   Y.Opts <- Y.Opts.D <- Y.Opts.1 <- Y.Opts.2 <- Y.Opts.3 <-  matrix(nrow = run, ncol = length(J.list))
   Y.Agree <- Y.Agree.D <- Y.Agree.1 <- Y.Agree.2 <- Y.Agree.3 <-  matrix(nrow = run, ncol = length(J.list))
+  Regret.D <- Regret.1 <- Regret.2 <- Regret.3 <-  matrix(nrow = run, ncol = length(J.list))
 
 
   Min.Alters <- matrix(nrow=run, ncol=length(J.list))
@@ -985,6 +1002,13 @@ begin.Sims <- function(run, n, sam.size, a, b, c, tau3, tau2, sigma2, alpha.0, a
     Y.Agree.2[,count] <- Res[,13]
     Y.Agree.3[,count] <- Res[,14]  
 
+    #Store regrets
+    Regret.D[,count] <- Res[,15]
+    Regret.1[,count] <- Res[,16]
+    Regret.2[,count] <- Res[,17]
+    Regret.3[,count] <- Res[,18] 
+
+
     #Store min, max, mean, and median alters in each simulation run
 
     Min.Alters[,count] <- Res.List$Min.Num.Alters  
@@ -1057,13 +1081,18 @@ begin.Sims <- function(run, n, sam.size, a, b, c, tau3, tau2, sigma2, alpha.0, a
   A<- c(rbind(A.Opts, A.Opts.D, A.Opts.1, A.Opts.2, A.Opts.3))
   YO <- c(rbind(Y.Opts, Y.Opts.D, Y.Opts.1, Y.Opts.2, Y.Opts.3))
   YA <- c(rbind(Y.Agree, Y.Agree.D, Y.Agree.1, Y.Agree.2, Y.Agree.3))
+  #rows=run*4, cols = length(J.list)
+  RegretResults <- c(rbind(Regret.D, Regret.1, Regret.2, Regret.3))
+
 
   print(A)
   print(YO)
   print(YA)
+  print(RegretResults)
 
 
   mthd <- rep(c("Observed", "ME1", "ME2", "ME3", "ME4"), each=run)
+  mthd_regret <- rep(c("ME1", "ME2", "ME3", "ME4"), each=run)
   psi.type.dw <- rep(c("psi.0", "psi.1", "psi.2", "psi.3"), each=run)
   psi.type.1 <- rep(c("psi.0", "psi.1", "psi.2", "psi.3"), each=run)
   psi.type.2 <- rep(c("psi.0", "psi.1", "psi.2", "psi.3"), each=run)
@@ -1081,6 +1110,8 @@ begin.Sims <- function(run, n, sam.size, a, b, c, tau3, tau2, sigma2, alpha.0, a
   names(YOpts) <- c("Method", "Outcome")
   YAgree <- data.frame(mthd, as.numeric(YA))
   names(YAgree) <- c("Method", "Agreement")
+  RegretMethods <- data.frame(mthd_regret, as.numeric(RegretResults))
+  names(RegretMethods) <- c("Method", "Regret")
 
   Min.Alters <- as.data.frame(Min.Alters)
   names(Min.Alters) <- as.character(J.list)
@@ -1116,7 +1147,7 @@ begin.Sims <- function(run, n, sam.size, a, b, c, tau3, tau2, sigma2, alpha.0, a
   names(Xsi.M3) <- c("XsiParameter", "Estimate")
 
 
-  bp_list <- list("AOpts" = AOpts, "YOpts" = YOpts, "YAgree" = YAgree, "Psi.Dw" = Psi.Dw, "Psi.M1" = Psi.M1, "Psi.M2" = Psi.M2, "Psi.M3" = Psi.M3, "Xsi.Dw" = Xsi.Dw, "Xsi.M1" = Xsi.M1, "Xsi.M2" = Xsi.M2, "Xsi.M3" = Xsi.M3, "Min.Alters" = Min.Alters, "Max.Alters" = Max.Alters, "Mean.Alters" = Mean.Alters, "Median.Alters" = Median.Alters)
+  bp_list <- list("AOpts" = AOpts, "YOpts" = YOpts, "YAgree" = YAgree, "RegretMethods" = RegretMethods, "Psi.Dw" = Psi.Dw, "Psi.M1" = Psi.M1, "Psi.M2" = Psi.M2, "Psi.M3" = Psi.M3, "Xsi.Dw" = Xsi.Dw, "Xsi.M1" = Xsi.M1, "Xsi.M2" = Xsi.M2, "Xsi.M3" = Xsi.M3, "Min.Alters" = Min.Alters, "Max.Alters" = Max.Alters, "Mean.Alters" = Mean.Alters, "Median.Alters" = Median.Alters)
   #bp_list <- list("AOpts" = AOpts, "YOpts" = YOpts, "YAgree" = YAgree)
 
   

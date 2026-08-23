@@ -23,10 +23,15 @@ J.list <- seq(a, b, 1)
 
 phys.grps <- c()
 
+phys.grps.regret <- c()
+
 for(j in J.list){
   phys.val <- as.character(j)
   #Times eleven because we have what is observed plus ten methods to compare
   phys.grps <- c(phys.grps, rep(phys.val, run*11))
+
+  #For regrets, times ten because we are comparing ten methods
+  phys.grps.regret <- c(phys.grps.regret, rep(phys.val, run*10))
 }
 
 AOpts.df <- bp_list$AOpts
@@ -37,6 +42,9 @@ YOpts.df$phys.grps <- phys.grps
 
 YAgree.df <- bp_list$YAgree
 YAgree.df$phys.grps <- phys.grps
+
+Regret.df <- bp_list$RegretMethods
+Regret.df$phys.grps <- phys.grps.regret
 
 phys.dw <- c()
 
@@ -145,6 +153,7 @@ Mean.B.Alters <- bp_list$Mean.B.Alters
 outputs <- list(
   AOpts_study1b_6to10 <- AOpts.df,
   YOpts_study1b_6to10 <- YOpts.df,
+  Regret_study1b_6to10 <- Regret.df,
   Psi_Dw_study1b_6to10 <- Psi.Dw,
   Psi_M1_study1b_6to10 <- Psi.M1,
   Psi_M2_study1b_6to10 <- Psi.M2,

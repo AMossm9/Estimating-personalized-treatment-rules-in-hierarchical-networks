@@ -804,13 +804,16 @@ dwols.wthn <- function(data.sim, data.test, I, J, n) {
   Aopt.dwols.1.test <- as.numeric((psi.0.stage1 + psi.1.stage1*data.test$X.ijk.1 + psi.2.stage1*data.test$total.w.1 + psi.3.stage1*data.test$V.i.1*data.test$total.w.1) > 0)
 
   Yopt.test <- data.test$Y.ijk + (Aopt.dwols.2.test-data.test$A.ijk.2)*(psi.0.stage2 + psi.1.stage2*data.test$X.ijk.2 + psi.2.stage2*data.test$total.w.2 + psi.3.stage2*data.test$V.i.2*data.test$total.w.2) + (Aopt.dwols.1.test-data.test$A.ijk.1)*(psi.0.stage1 + psi.1.stage1*data.test$X.ijk.1 + psi.2.stage1*data.test$total.w.1 + psi.3.stage1*data.test$V.i.1*data.test$total.w.1)
+  regret.dwols.1 <- (Aopt.dwols.1.test-data.test$A.ijk.1)*(psi.0.stage1 + psi.1.stage1*data.test$X.ijk.1 + psi.2.stage1*data.test$total.w.1 + psi.3.stage1*data.test$V.i.1*data.test$total.w.1)
+  regret.dwols.2 <- (Aopt.dwols.2.test-data.test$A.ijk.2)*(psi.0.stage2 + psi.1.stage2*data.test$X.ijk.2 + psi.2.stage2*data.test$total.w.2 + psi.3.stage2*data.test$V.i.2*data.test$total.w.2)
+  regret.total <- regret.dwols.1 + regret.dwols.2
   #Aopt.dwols.obs <- as.numeric((psi.0.hat + psi.1.hat*data.sim$X.ijk) > 0)
   
   #Mean of outcomes where treatment we observe is the same as the dwols optimal
   #treatment for our given dataset
   #Y.agree <- mean(data.sim$Y.ijk[data.sim$A.ijk == Aopt.dwols.obs])
   
-  return(data.frame(Aopt.dwols.1.test, Aopt.dwols.2.test, Yopt.test, psi.0.stage1, psi.1.stage1, psi.2.stage1, psi.3.stage1, psi.0.stage2, psi.1.stage2, psi.2.stage2, psi.3.stage2, xsi.0.stage1, xsi.1.stage1, xsi.0.stage2, xsi.1.stage2))
+  return(data.frame(Aopt.dwols.1.test, Aopt.dwols.2.test, Yopt.test, psi.0.stage1, psi.1.stage1, psi.2.stage1, psi.3.stage1, psi.0.stage2, psi.1.stage2, psi.2.stage2, psi.3.stage2, xsi.0.stage1, xsi.1.stage1, xsi.0.stage2, xsi.1.stage2, regret.dwols.1, regret.dwols.2, regret.total))
 }
 
 dwols.standard <- function(data.sim, data.test, I, J, n) {
@@ -853,13 +856,16 @@ dwols.standard <- function(data.sim, data.test, I, J, n) {
   Aopt.dwols.1.test <- as.numeric((psi.0.stage1 + psi.1.stage1*data.test$X.ijk.1 + psi.2.stage1*data.test$total.t.1 + psi.3.stage1*data.test$V.i.1*data.test$total.t.1) > 0)
 
   Yopt.test <- data.test$Y.ijk + (Aopt.dwols.2.test-data.test$A.ijk.2)*(psi.0.stage2 + psi.1.stage2*data.test$X.ijk.2 + psi.2.stage2*data.test$total.t.2 + psi.3.stage2*data.test$V.i.2*data.test$total.t.2) + (Aopt.dwols.1.test-data.test$A.ijk.1)*(psi.0.stage1 + psi.1.stage1*data.test$X.ijk.1 + psi.2.stage1*data.test$total.t.1 + psi.3.stage1*data.test$V.i.1*data.test$total.t.1)
+  regret.dwols.1 <- (Aopt.dwols.1.test-data.test$A.ijk.1)*(psi.0.stage1 + psi.1.stage1*data.test$X.ijk.1 + psi.2.stage1*data.test$total.t.1 + psi.3.stage1*data.test$V.i.1*data.test$total.t.1)
+  regret.dwols.2 <- (Aopt.dwols.2.test-data.test$A.ijk.2)*(psi.0.stage2 + psi.1.stage2*data.test$X.ijk.2 + psi.2.stage2*data.test$total.t.2 + psi.3.stage2*data.test$V.i.2*data.test$total.t.2)
+  regret.total <- regret.dwols.1 + regret.dwols.2
   #Aopt.dwols.obs <- as.numeric((psi.0.hat + psi.1.hat*data.sim$X.ijk) > 0)
   
   #Mean of outcomes where treatment we observe is the same as the dwols optimal
   #treatment for our given dataset
   #Y.agree <- mean(data.sim$Y.ijk[data.sim$A.ijk == Aopt.dwols.obs])
   
-  return(data.frame(Aopt.dwols.1.test, Aopt.dwols.2.test, Yopt.test, psi.0.stage1, psi.1.stage1, psi.2.stage1, psi.3.stage1, psi.0.stage2, psi.1.stage2, psi.2.stage2, psi.3.stage2, xsi.0.stage1, xsi.1.stage1, xsi.0.stage2, xsi.1.stage2))
+  return(data.frame(Aopt.dwols.1.test, Aopt.dwols.2.test, Yopt.test, psi.0.stage1, psi.1.stage1, psi.2.stage1, psi.3.stage1, psi.0.stage2, psi.1.stage2, psi.2.stage2, psi.3.stage2, xsi.0.stage1, xsi.1.stage1, xsi.0.stage2, xsi.1.stage2, regret.dwols.1, regret.dwols.2, regret.total))
 }
 
 dwols.both <- function(data.sim, data.test, I, J, n) {
@@ -902,13 +908,16 @@ dwols.both <- function(data.sim, data.test, I, J, n) {
   Aopt.dwols.1.test <- as.numeric((psi.0.stage1 + psi.1.stage1*data.test$X.ijk.1 + psi.2.stage1*data.test$total.t.1 + psi.3.stage1*data.test$V.i.1*data.test$total.t.1) > 0)
 
   Yopt.test <- data.test$Y.ijk + (Aopt.dwols.2.test-data.test$A.ijk.2)*(psi.0.stage2 + psi.1.stage2*data.test$X.ijk.2 + psi.2.stage2*data.test$total.t.2 + psi.3.stage2*data.test$V.i.2*data.test$total.t.2) + (Aopt.dwols.1.test-data.test$A.ijk.1)*(psi.0.stage1 + psi.1.stage1*data.test$X.ijk.1 + psi.2.stage1*data.test$total.t.1 + psi.3.stage1*data.test$V.i.1*data.test$total.t.1)
+  regret.dwols.1 <- (Aopt.dwols.1.test-data.test$A.ijk.1)*(psi.0.stage1 + psi.1.stage1*data.test$X.ijk.1 + psi.2.stage1*data.test$total.t.1 + psi.3.stage1*data.test$V.i.1*data.test$total.t.1)
+  regret.dwols.2 <- (Aopt.dwols.2.test-data.test$A.ijk.2)*(psi.0.stage2 + psi.1.stage2*data.test$X.ijk.2 + psi.2.stage2*data.test$total.t.2 + psi.3.stage2*data.test$V.i.2*data.test$total.t.2)
+  regret.total <- regret.dwols.1 + regret.dwols.2
   #Aopt.dwols.obs <- as.numeric((psi.0.hat + psi.1.hat*data.sim$X.ijk) > 0)
   
   #Mean of outcomes where treatment we observe is the same as the dwols optimal
   #treatment for our given dataset
   #Y.agree <- mean(data.sim$Y.ijk[data.sim$A.ijk == Aopt.dwols.obs])
   
-  return(data.frame(Aopt.dwols.1.test, Aopt.dwols.2.test, Yopt.test, psi.0.stage1, psi.1.stage1, psi.2.stage1, psi.3.stage1, psi.0.stage2, psi.1.stage2, psi.2.stage2, psi.3.stage2, xsi.0.stage1, xsi.1.stage1, xsi.0.stage2, xsi.1.stage2))
+  return(data.frame(Aopt.dwols.1.test, Aopt.dwols.2.test, Yopt.test, psi.0.stage1, psi.1.stage1, psi.2.stage1, psi.3.stage1, psi.0.stage2, psi.1.stage2, psi.2.stage2, psi.3.stage2, xsi.0.stage1, xsi.1.stage1, xsi.0.stage2, xsi.1.stage2, regret.dwols.1, regret.dwols.2, regret.total))
 }
 
 
@@ -953,23 +962,26 @@ dwols.both.resc <- function(data.sim, data.test, I, J, n) {
   Aopt.dwols.1.test <- as.numeric((psi.0.stage1 + psi.1.stage1*data.test$X.ijk.1 + psi.2.stage1*data.test$total.t.1 + psi.3.stage1*data.test$V.i.1*data.test$total.t.1) > 0)
 
   Yopt.test <- data.test$Y.ijk + (Aopt.dwols.2.test-data.test$A.ijk.2)*(psi.0.stage2 + psi.1.stage2*data.test$X.ijk.2 + psi.2.stage2*data.test$total.t.2 + psi.3.stage2*data.test$V.i.2*data.test$total.t.2) + (Aopt.dwols.1.test-data.test$A.ijk.1)*(psi.0.stage1 + psi.1.stage1*data.test$X.ijk.1 + psi.2.stage1*data.test$total.t.1 + psi.3.stage1*data.test$V.i.1*data.test$total.t.1)
+  regret.dwols.1 <- (Aopt.dwols.1.test-data.test$A.ijk.1)*(psi.0.stage1 + psi.1.stage1*data.test$X.ijk.1 + psi.2.stage1*data.test$total.t.1 + psi.3.stage1*data.test$V.i.1*data.test$total.t.1)
+  regret.dwols.2 <- (Aopt.dwols.2.test-data.test$A.ijk.2)*(psi.0.stage2 + psi.1.stage2*data.test$X.ijk.2 + psi.2.stage2*data.test$total.t.2 + psi.3.stage2*data.test$V.i.2*data.test$total.t.2)
+  regret.total <- regret.dwols.1 + regret.dwols.2
   #Aopt.dwols.obs <- as.numeric((psi.0.hat + psi.1.hat*data.sim$X.ijk) > 0)
   
   #Mean of outcomes where treatment we observe is the same as the dwols optimal
   #treatment for our given dataset
   #Y.agree <- mean(data.sim$Y.ijk[data.sim$A.ijk == Aopt.dwols.obs])
   
-  return(data.frame(Aopt.dwols.1.test, Aopt.dwols.2.test, Yopt.test, psi.0.stage1, psi.1.stage1, psi.2.stage1, psi.3.stage1, psi.0.stage2, psi.1.stage2, psi.2.stage2, psi.3.stage2, xsi.0.stage1, xsi.1.stage1, xsi.0.stage2, xsi.1.stage2))
+  return(data.frame(Aopt.dwols.1.test, Aopt.dwols.2.test, Yopt.test, psi.0.stage1, psi.1.stage1, psi.2.stage1, psi.3.stage1, psi.0.stage2, psi.1.stage2, psi.2.stage2, psi.3.stage2, xsi.0.stage1, xsi.1.stage1, xsi.0.stage2, xsi.1.stage2, regret.dwols.1, regret.dwols.2, regret.total))
 }
 
 #******************************************************************************************************************************
 #SIMULATIONS START HERE
 Sims <- function(I, J, n, sam.size, tau3, tau2, sigma2, alpha.0, alpha.1, alpha.2, psi.0, psi.1, psi.2, psi.3, run, model) {
-  Res.both <- data.frame(A1OPT = double(), A2OPT = double(), DWOLS.BOTH.STAGE1 = double(), DWOLS.BOTH.STAGE2 = double(),  Yopt = double(), Yopt.DWOLS.BOTH = double(), PSI.0.STAGE1.BOTH=double(), PSI.1.STAGE1.BOTH=double(),PSI.2.STAGE1.BOTH=double(),PSI.3.STAGE1.BOTH=double(),PSI.0.STAGE2.BOTH=double(), PSI.1.STAGE2.BOTH=double(),PSI.2.STAGE2.BOTH=double(),PSI.3.STAGE2.BOTH=double(), XSI.0.STAGE1.BOTH=double(), XSI.1.STAGE1.BOTH=double(), XSI.0.STAGE2.BOTH=double(), XSI.1.STAGE2.BOTH=double())
-  Res.both.resc <- data.frame(A1OPT = double(), A2OPT = double(), DWOLS.BOTH.RESC.STAGE1 = double(), DWOLS.BOTH.RESC.STAGE2 = double(),  Yopt = double(), Yopt.DWOLS.BOTH.RESC = double(), PSI.0.STAGE1.BOTH.RESC=double(), PSI.1.STAGE1.BOTH.RESC=double(),PSI.2.STAGE1.BOTH.RESC=double(),PSI.3.STAGE1.BOTH.RESC=double(),PSI.0.STAGE2.BOTH.RESC=double(), PSI.1.STAGE2.BOTH.RESC=double(),PSI.2.STAGE2.BOTH.RESC=double(),PSI.3.STAGE2.BOTH.RESC=double(), XSI.0.STAGE1.BOTH.RESC=double(), XSI.1.STAGE1.BOTH.RESC=double(), XSI.0.STAGE2.BOTH.RESC=double(), XSI.1.STAGE2.BOTH.RESC=double())
+  Res.both <- data.frame(A1OPT = double(), A2OPT = double(), DWOLS.BOTH.STAGE1 = double(), DWOLS.BOTH.STAGE2 = double(),  Yopt = double(), Yopt.DWOLS.BOTH = double(), PSI.0.STAGE1.BOTH=double(), PSI.1.STAGE1.BOTH=double(),PSI.2.STAGE1.BOTH=double(),PSI.3.STAGE1.BOTH=double(),PSI.0.STAGE2.BOTH=double(), PSI.1.STAGE2.BOTH=double(),PSI.2.STAGE2.BOTH=double(),PSI.3.STAGE2.BOTH=double(), XSI.0.STAGE1.BOTH=double(), XSI.1.STAGE1.BOTH=double(), XSI.0.STAGE2.BOTH=double(), XSI.1.STAGE2.BOTH=double(), REGRET.STAGE1.BOTH=double(), REGRET.STAGE2.BOTH=double(), REGRET.TOTAL.BOTH=double())
+  Res.both.resc <- data.frame(A1OPT = double(), A2OPT = double(), DWOLS.BOTH.RESC.STAGE1 = double(), DWOLS.BOTH.RESC.STAGE2 = double(),  Yopt = double(), Yopt.DWOLS.BOTH.RESC = double(), PSI.0.STAGE1.BOTH.RESC=double(), PSI.1.STAGE1.BOTH.RESC=double(),PSI.2.STAGE1.BOTH.RESC=double(),PSI.3.STAGE1.BOTH.RESC=double(),PSI.0.STAGE2.BOTH.RESC=double(), PSI.1.STAGE2.BOTH.RESC=double(),PSI.2.STAGE2.BOTH.RESC=double(),PSI.3.STAGE2.BOTH.RESC=double(), XSI.0.STAGE1.BOTH.RESC=double(), XSI.1.STAGE1.BOTH.RESC=double(), XSI.0.STAGE2.BOTH.RESC=double(), XSI.1.STAGE2.BOTH.RESC=double(), REGRET.STAGE1.BOTH.RESC=double(), REGRET.STAGE2.BOTH.RESC=double(), REGRET.TOTAL.BOTH.RESC=double())
 
-  Res.wthn <- data.frame(A1OPT = double(), A2OPT = double(), DWOLS.WTHN.STAGE1 = double(), DWOLS.WTHN.STAGE2 = double(),  Yopt = double(), Yopt.DWOLS.WTHN = double(), PSI.0.STAGE1.WTHN=double(), PSI.1.STAGE1.WTHN=double(),PSI.2.STAGE1.WTHN=double(),PSI.3.STAGE1.WTHN=double(),PSI.0.STAGE2.WTHN=double(), PSI.1.STAGE2.WTHN=double(),PSI.2.STAGE2.WTHN=double(),PSI.3.STAGE2.WTHN=double(), XSI.0.STAGE1.WTHN=double(), XSI.1.STAGE1.WTHN=double(), XSI.0.STAGE2.WTHN=double(), XSI.1.STAGE2.WTHN=double())
-  Res.standard <- data.frame(A1OPT = double(), A2OPT = double(), DWOLS.STANDARD.STAGE1 = double(), DWOLS.STANDARD.STAGE2 = double(),  Yopt = double(), Yopt.DWOLS.STANDARD = double(), PSI.0.STAGE1.STANDARD=double(), PSI.1.STAGE1.STANDARD=double(),PSI.2.STAGE1.STANDARD=double(),PSI.3.STAGE1.STANDARD=double(),PSI.0.STAGE2.STANDARD=double(), PSI.1.STAGE2.STANDARD=double(),PSI.2.STAGE2.STANDARD=double(),PSI.3.STAGE2.STANDARD=double(), XSI.0.STAGE1.STANDARD=double(), XSI.1.STAGE1.STANDARD=double(), XSI.0.STAGE2.STANDARD=double(), XSI.1.STAGE2.STANDARD=double())
+  Res.wthn <- data.frame(A1OPT = double(), A2OPT = double(), DWOLS.WTHN.STAGE1 = double(), DWOLS.WTHN.STAGE2 = double(),  Yopt = double(), Yopt.DWOLS.WTHN = double(), PSI.0.STAGE1.WTHN=double(), PSI.1.STAGE1.WTHN=double(),PSI.2.STAGE1.WTHN=double(),PSI.3.STAGE1.WTHN=double(),PSI.0.STAGE2.WTHN=double(), PSI.1.STAGE2.WTHN=double(),PSI.2.STAGE2.WTHN=double(),PSI.3.STAGE2.WTHN=double(), XSI.0.STAGE1.WTHN=double(), XSI.1.STAGE1.WTHN=double(), XSI.0.STAGE2.WTHN=double(), XSI.1.STAGE2.WTHN=double(), REGRET.STAGE1.WTHN=double(), REGRET.STAGE2.WTHN=double(), REGRET.TOTAL.WTHN=double())
+  Res.standard <- data.frame(A1OPT = double(), A2OPT = double(), DWOLS.STANDARD.STAGE1 = double(), DWOLS.STANDARD.STAGE2 = double(),  Yopt = double(), Yopt.DWOLS.STANDARD = double(), PSI.0.STAGE1.STANDARD=double(), PSI.1.STAGE1.STANDARD=double(),PSI.2.STAGE1.STANDARD=double(),PSI.3.STAGE1.STANDARD=double(),PSI.0.STAGE2.STANDARD=double(), PSI.1.STAGE2.STANDARD=double(),PSI.2.STAGE2.STANDARD=double(),PSI.3.STAGE2.STANDARD=double(), XSI.0.STAGE1.STANDARD=double(), XSI.1.STAGE1.STANDARD=double(), XSI.0.STAGE2.STANDARD=double(), XSI.1.STAGE2.STANDARD=double(), REGRET.STAGE1.STANDARD=double(), REGRET.STAGE2.STANDARD=double(), REGRET.TOTAL.STANDARD=double())
 
   Min.Num.Alters <- c()
   Max.Num.Alters <- c()
@@ -995,6 +1007,9 @@ Sims <- function(I, J, n, sam.size, tau3, tau2, sigma2, alpha.0, alpha.1, alpha.
     Aopt.dwols.both <- dwols.both(data.sim, data.test, I, J, n)
     A1opt.dwols.both <- Aopt.dwols.both$Aopt.dwols.1.test
     A2opt.dwols.both <- Aopt.dwols.both$Aopt.dwols.2.test
+    regret1.dwols.both <- Aopt.dwols.both$regret.dwols.1
+    regret2.dwols.both <- Aopt.dwols.both$regret.dwols.2
+    regretTotal.dwols.both <- Aopt.dwols.both$regret.total
    
     Yopt.dwols.both <- Aopt.dwols.both$Yopt.test
     
@@ -1005,6 +1020,9 @@ Sims <- function(I, J, n, sam.size, tau3, tau2, sigma2, alpha.0, alpha.1, alpha.
     Aopt.dwols.both.resc <- dwols.both.resc(data.sim, data.test, I, J, n)
     A1opt.dwols.both.resc <- Aopt.dwols.both.resc$Aopt.dwols.1.test
     A2opt.dwols.both.resc <- Aopt.dwols.both.resc$Aopt.dwols.2.test
+    regret1.dwols.both.resc <- Aopt.dwols.both.resc$regret.dwols.1
+    regret2.dwols.both.resc <- Aopt.dwols.both.resc$regret.dwols.2
+    regretTotal.dwols.both.resc <- Aopt.dwols.both.resc$regret.total
    
     Yopt.dwols.both.resc <- Aopt.dwols.both.resc$Yopt.test
     
@@ -1015,19 +1033,25 @@ Sims <- function(I, J, n, sam.size, tau3, tau2, sigma2, alpha.0, alpha.1, alpha.
     Aopt.dwols.wthn <- dwols.wthn(data.sim, data.test, I, J, n)
     A1opt.dwols.wthn <- Aopt.dwols.wthn$Aopt.dwols.1.test
     A2opt.dwols.wthn <- Aopt.dwols.wthn$Aopt.dwols.2.test
+    regret1.dwols.wthn <- Aopt.dwols.wthn$regret.dwols.1
+    regret2.dwols.wthn <- Aopt.dwols.wthn$regret.dwols.2
+    regretTotal.dwols.wthn <- Aopt.dwols.wthn$regret.total
    
     Yopt.dwols.wthn <- Aopt.dwols.wthn$Yopt.test
 
     Aopt.dwols.standard <- dwols.standard(data.sim, data.test, I, J, n)
     A1opt.dwols.standard<- Aopt.dwols.standard$Aopt.dwols.1.test
     A2opt.dwols.standard <- Aopt.dwols.standard$Aopt.dwols.2.test
+    regret1.dwols.standard <- Aopt.dwols.standard$regret.dwols.1
+    regret2.dwols.standard <- Aopt.dwols.standard$regret.dwols.2
+    regretTotal.dwols.standard <- Aopt.dwols.standard$regret.total
    
     Yopt.dwols.standard <- Aopt.dwols.standard$Yopt.test
     
-    Res.both[seed,] <- c(c(sum(data.sim$AOpt.ijk.1 == data.sim$A.ijk.1), sum(data.sim$AOpt.ijk.2 == data.sim$A.ijk.2), sum(A1opt.dwols.both == A1opt), sum(A2opt.dwols.both == A2opt))/(sam.size*I), mean(Yopt), mean(Yopt.dwols.both), Aopt.dwols.both$psi.0.stage1[1], Aopt.dwols.both$psi.1.stage1[1], Aopt.dwols.both$psi.2.stage1[1], Aopt.dwols.both$psi.3.stage1[1], Aopt.dwols.both$psi.0.stage2[1], Aopt.dwols.both$psi.1.stage2[1], Aopt.dwols.both$psi.2.stage2[1], Aopt.dwols.both$psi.3.stage2[1], Aopt.dwols.both$xsi.0.stage1[1], Aopt.dwols.both$xsi.1.stage1[1], Aopt.dwols.both$xsi.0.stage2[1], Aopt.dwols.both$xsi.1.stage2[1])
-    Res.both.resc[seed,] <- c(c(sum(data.sim$AOpt.ijk.1 == data.sim$A.ijk.1), sum(data.sim$AOpt.ijk.2 == data.sim$A.ijk.2), sum(A1opt.dwols.both.resc == A1opt), sum(A2opt.dwols.both.resc == A2opt))/(sam.size*I), mean(Yopt), mean(Yopt.dwols.both.resc), Aopt.dwols.both.resc$psi.0.stage1[1], Aopt.dwols.both.resc$psi.1.stage1[1], Aopt.dwols.both.resc$psi.2.stage1[1], Aopt.dwols.both.resc$psi.3.stage1[1], Aopt.dwols.both.resc$psi.0.stage2[1], Aopt.dwols.both.resc$psi.1.stage2[1], Aopt.dwols.both.resc$psi.2.stage2[1], Aopt.dwols.both.resc$psi.3.stage2[1], Aopt.dwols.both.resc$xsi.0.stage1[1], Aopt.dwols.both.resc$xsi.1.stage1[1], Aopt.dwols.both.resc$xsi.0.stage2[1], Aopt.dwols.both.resc$xsi.1.stage2[1])
-    Res.wthn[seed,] <- c(c(sum(data.sim$AOpt.ijk.1 == data.sim$A.ijk.1), sum(data.sim$AOpt.ijk.2 == data.sim$A.ijk.2), sum(A1opt.dwols.wthn == A1opt), sum(A2opt.dwols.wthn == A2opt))/(sam.size*I), mean(Yopt), mean(Yopt.dwols.wthn), Aopt.dwols.wthn$psi.0.stage1[1], Aopt.dwols.wthn$psi.1.stage1[1], Aopt.dwols.wthn$psi.2.stage1[1], Aopt.dwols.wthn$psi.3.stage1[1], Aopt.dwols.wthn$psi.0.stage2[1], Aopt.dwols.wthn$psi.1.stage2[1], Aopt.dwols.wthn$psi.2.stage2[1], Aopt.dwols.wthn$psi.3.stage2[1], Aopt.dwols.wthn$xsi.0.stage1[1], Aopt.dwols.wthn$xsi.1.stage1[1], Aopt.dwols.wthn$xsi.0.stage2[1], Aopt.dwols.wthn$xsi.1.stage2[1])
-    Res.standard[seed,] <- c(c(sum(data.sim$AOpt.ijk.1 == data.sim$A.ijk.1), sum(data.sim$AOpt.ijk.2 == data.sim$A.ijk.2), sum(A1opt.dwols.standard == A1opt), sum(A2opt.dwols.standard == A2opt))/(sam.size*I), mean(Yopt), mean(Yopt.dwols.standard), Aopt.dwols.standard$psi.0.stage1[1], Aopt.dwols.standard$psi.1.stage1[1], Aopt.dwols.standard$psi.2.stage1[1], Aopt.dwols.standard$psi.3.stage1[1], Aopt.dwols.standard$psi.0.stage2[1], Aopt.dwols.standard$psi.1.stage2[1], Aopt.dwols.standard$psi.2.stage2[1], Aopt.dwols.standard$psi.3.stage2[1], Aopt.dwols.standard$xsi.0.stage1[1], Aopt.dwols.standard$xsi.1.stage1[1], Aopt.dwols.standard$xsi.0.stage2[1], Aopt.dwols.standard$xsi.1.stage2[1])
+    Res.both[seed,] <- c(c(sum(data.sim$AOpt.ijk.1 == data.sim$A.ijk.1), sum(data.sim$AOpt.ijk.2 == data.sim$A.ijk.2), sum(A1opt.dwols.both == A1opt), sum(A2opt.dwols.both == A2opt))/(sam.size*I), mean(Yopt), mean(Yopt.dwols.both), Aopt.dwols.both$psi.0.stage1[1], Aopt.dwols.both$psi.1.stage1[1], Aopt.dwols.both$psi.2.stage1[1], Aopt.dwols.both$psi.3.stage1[1], Aopt.dwols.both$psi.0.stage2[1], Aopt.dwols.both$psi.1.stage2[1], Aopt.dwols.both$psi.2.stage2[1], Aopt.dwols.both$psi.3.stage2[1], Aopt.dwols.both$xsi.0.stage1[1], Aopt.dwols.both$xsi.1.stage1[1], Aopt.dwols.both$xsi.0.stage2[1], Aopt.dwols.both$xsi.1.stage2[1], mean(regret1.dwols.both), mean(regret2.dwols.both), mean(regretTotal.dwols.both))
+    Res.both.resc[seed,] <- c(c(sum(data.sim$AOpt.ijk.1 == data.sim$A.ijk.1), sum(data.sim$AOpt.ijk.2 == data.sim$A.ijk.2), sum(A1opt.dwols.both.resc == A1opt), sum(A2opt.dwols.both.resc == A2opt))/(sam.size*I), mean(Yopt), mean(Yopt.dwols.both.resc), Aopt.dwols.both.resc$psi.0.stage1[1], Aopt.dwols.both.resc$psi.1.stage1[1], Aopt.dwols.both.resc$psi.2.stage1[1], Aopt.dwols.both.resc$psi.3.stage1[1], Aopt.dwols.both.resc$psi.0.stage2[1], Aopt.dwols.both.resc$psi.1.stage2[1], Aopt.dwols.both.resc$psi.2.stage2[1], Aopt.dwols.both.resc$psi.3.stage2[1], Aopt.dwols.both.resc$xsi.0.stage1[1], Aopt.dwols.both.resc$xsi.1.stage1[1], Aopt.dwols.both.resc$xsi.0.stage2[1], Aopt.dwols.both.resc$xsi.1.stage2[1], mean(regret1.dwols.both.resc), mean(regret2.dwols.both.resc), mean(regretTotal.dwols.both.resc))
+    Res.wthn[seed,] <- c(c(sum(data.sim$AOpt.ijk.1 == data.sim$A.ijk.1), sum(data.sim$AOpt.ijk.2 == data.sim$A.ijk.2), sum(A1opt.dwols.wthn == A1opt), sum(A2opt.dwols.wthn == A2opt))/(sam.size*I), mean(Yopt), mean(Yopt.dwols.wthn), Aopt.dwols.wthn$psi.0.stage1[1], Aopt.dwols.wthn$psi.1.stage1[1], Aopt.dwols.wthn$psi.2.stage1[1], Aopt.dwols.wthn$psi.3.stage1[1], Aopt.dwols.wthn$psi.0.stage2[1], Aopt.dwols.wthn$psi.1.stage2[1], Aopt.dwols.wthn$psi.2.stage2[1], Aopt.dwols.wthn$psi.3.stage2[1], Aopt.dwols.wthn$xsi.0.stage1[1], Aopt.dwols.wthn$xsi.1.stage1[1], Aopt.dwols.wthn$xsi.0.stage2[1], Aopt.dwols.wthn$xsi.1.stage2[1], mean(regret1.dwols.wthn), mean(regret2.dwols.wthn), mean(regretTotal.dwols.wthn))
+    Res.standard[seed,] <- c(c(sum(data.sim$AOpt.ijk.1 == data.sim$A.ijk.1), sum(data.sim$AOpt.ijk.2 == data.sim$A.ijk.2), sum(A1opt.dwols.standard == A1opt), sum(A2opt.dwols.standard == A2opt))/(sam.size*I), mean(Yopt), mean(Yopt.dwols.standard), Aopt.dwols.standard$psi.0.stage1[1], Aopt.dwols.standard$psi.1.stage1[1], Aopt.dwols.standard$psi.2.stage1[1], Aopt.dwols.standard$psi.3.stage1[1], Aopt.dwols.standard$psi.0.stage2[1], Aopt.dwols.standard$psi.1.stage2[1], Aopt.dwols.standard$psi.2.stage2[1], Aopt.dwols.standard$psi.3.stage2[1], Aopt.dwols.standard$xsi.0.stage1[1], Aopt.dwols.standard$xsi.1.stage1[1], Aopt.dwols.standard$xsi.0.stage2[1], Aopt.dwols.standard$xsi.1.stage2[1], mean(regret1.dwols.standard), mean(regret2.dwols.standard), mean(regretTotal.dwols.standard))
 
   }
   return(list("Res.both"=Res.both, "Res.both.resc"=Res.both.resc, "Res.wthn"=Res.wthn, "Res.standard"=Res.standard, "Min.Num.Alters" = Min.Num.Alters, "Max.Num.Alters" = Max.Num.Alters, "Mean.Num.Alters" = Mean.Num.Alters, "Median.Num.Alters" = Median.Num.Alters))
@@ -1101,16 +1125,6 @@ outputs <- list(
 )
 
 saveRDS(outputs, "results/sims_two_stage_trt_mis.rds")
-
-write.csv(Results.both, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/TwoStage_Res_both_TrtMis_samsize50n50.csv")
-write.csv(Results.both.resc, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/TwoStage_Res_bothresc_TrtMis_samsize50n50.csv")
-write.csv(Results.wthn, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/TwoStage_Res_wthn_TrtMis_samsize50n50.csv")
-write.csv(Results.standard, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/TwoStage_Res_standard_TrtMis_samsize50n50.csv")
-
-write.csv(Min.Num.Alters, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/TwoStage_MinAlters_TrtMis_samsize50n50.csv")
-write.csv(Max.Num.Alters, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/TwoStage_MaxAlters_TrtMis_samsize50n50.csv")
-write.csv(Mean.Num.Alters, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/TwoStage_MeanAlters_TrtMis_samsize50n50.csv")
-write.csv(Median.Num.Alters, "C:/Users/am/Documents/PhDYear4/Project1SimulationsFeb2025/SampleSize50/TwoStage_MedianAlters_TrtMis_samsize50n50.csv")
 
 dwols.trt.df <- data.frame(AOpts = 100*c(c(Results.wthn$DWOLS.WTHN.STAGE1),c(Results.wthn$DWOLS.WTHN.STAGE2),c(Results.standard$DWOLS.STANDARD.STAGE1),c(Results.standard$DWOLS.STANDARD.STAGE2),c(Results.both$DWOLS.BOTH.STAGE1),c(Results.both$DWOLS.BOTH.STAGE2),c(Results.both.resc$DWOLS.BOTH.RESC.STAGE1),c(Results.both.resc$DWOLS.BOTH.RESC.STAGE2)), Method = rep(c("ME1","ME2","ME3", "ME4"),each=run*2), Stage = rep(rep(c("Stage 1","Stage 2"),each=run),4) )
 
