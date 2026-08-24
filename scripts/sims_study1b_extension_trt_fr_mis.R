@@ -662,7 +662,7 @@ dwols <- function(data.sim, data.test, I, J, n) {
   #treatment for our given dataset
   Y.agree <- mean(data.sim$Y.ijk[data.sim$A.ijk == Aopt.dwols.obs])
   
-  return(data.frame(mean(Aopt.dwols == data.test$AOpt.ijk), mean(Y.opt), mean(Y.agree), psi.0.hat, psi.1.hat, psi.2.hat, psi.3.hat, xsi.0.hat, xsi.1.hat, regret))
+  return(data.frame(mean(Aopt.dwols == data.test$AOpt.ijk), mean(Y.opt), mean(Y.agree), psi.0.hat, psi.1.hat, psi.2.hat, psi.3.hat, xsi.0.hat, xsi.1.hat, mean(regret)))
 }
 
 #METHOD #2: ACCOUNTS FOR WITHIN- AND BETWEEN-GROUP INTERFERENCE, USES STANDARD INDIVIDUAL WEIGHTS
@@ -700,7 +700,7 @@ dwols_mod_1 <- function(data.sim, data.test, I, J, n) {
   #treatment for our given dataset
   Y.agree <- mean(data.sim$Y.ijk[data.sim$A.ijk == Aopt.dwols.obs])
   
-  return(data.frame(mean(Aopt.dwols == data.test$AOpt.ijk), mean(Y.opt), mean(Y.agree), psi.0.hat, psi.1.hat, psi.2.hat, psi.3.hat, xsi.0.hat, xsi.1.hat, regret))
+  return(data.frame(mean(Aopt.dwols == data.test$AOpt.ijk), mean(Y.opt), mean(Y.agree), psi.0.hat, psi.1.hat, psi.2.hat, psi.3.hat, xsi.0.hat, xsi.1.hat, mean(regret)))
 }
 
 #METHOD #3: ACCOUNTS FOR WITHIN- AND BETWEEN-GROUP INTERFERENCE, USES NON-RESCALED NETWORK WEIGHTS FROM ALL NEIGHBOURS
@@ -738,7 +738,7 @@ dwols_mod_2 <- function(data.sim, data.test, I, J, n) {
   #treatment for our given dataset
   Y.agree <- mean(data.sim$Y.ijk[data.sim$A.ijk == Aopt.dwols.obs])
   
-  return(data.frame(mean(Aopt.dwols == data.test$AOpt.ijk), mean(Y.opt), mean(Y.agree), psi.0.hat, psi.1.hat, psi.2.hat, psi.3.hat, xsi.0.hat, xsi.1.hat, regret))
+  return(data.frame(mean(Aopt.dwols == data.test$AOpt.ijk), mean(Y.opt), mean(Y.agree), psi.0.hat, psi.1.hat, psi.2.hat, psi.3.hat, xsi.0.hat, xsi.1.hat, mean(regret)))
 }
 
 #METHOD #4: ACCOUNTS FOR WITHIN- AND BETWEEN-GROUP INTERFERENCE, USES RESCALED NETWORK WEIGHTS FROM ALL NEIGHBOURS
@@ -776,7 +776,7 @@ dwols_mod_3 <- function(data.sim, data.test, I, J, n) {
   #treatment for our given dataset
   Y.agree <- mean(data.sim$Y.ijk[data.sim$A.ijk == Aopt.dwols.obs])
   
-  return(data.frame(mean(Aopt.dwols == data.test$AOpt.ijk), mean(Y.opt), mean(Y.agree), psi.0.hat, psi.1.hat, psi.2.hat, psi.3.hat, xsi.0.hat, xsi.1.hat, regret))
+  return(data.frame(mean(Aopt.dwols == data.test$AOpt.ijk), mean(Y.opt), mean(Y.agree), psi.0.hat, psi.1.hat, psi.2.hat, psi.3.hat, xsi.0.hat, xsi.1.hat, mean(regret)))
 }
 
 dwols_mod_4 <- function(data.sim, data.test, I, J, n) {
@@ -812,7 +812,7 @@ dwols_mod_4 <- function(data.sim, data.test, I, J, n) {
   #treatment for our given dataset
   Y.agree <- mean(data.sim$Y.ijk[data.sim$A.ijk == Aopt.dwols.obs])
   
-  return(data.frame(mean(Aopt.dwols == data.test$AOpt.ijk), mean(Y.opt), mean(Y.agree), psi.0.hat, psi.1.hat, psi.2.hat, psi.3.hat, xsi.0.hat, xsi.1.hat, regret))
+  return(data.frame(mean(Aopt.dwols == data.test$AOpt.ijk), mean(Y.opt), mean(Y.agree), psi.0.hat, psi.1.hat, psi.2.hat, psi.3.hat, xsi.0.hat, xsi.1.hat, mean(regret)))
 }
 
 dwols_mod_5 <- function(data.sim, data.test, I, J, n) {
@@ -848,7 +848,7 @@ dwols_mod_5 <- function(data.sim, data.test, I, J, n) {
   #treatment for our given dataset
   Y.agree <- mean(data.sim$Y.ijk[data.sim$A.ijk == Aopt.dwols.obs])
   
-  return(data.frame(mean(Aopt.dwols == data.test$AOpt.ijk), mean(Y.opt), mean(Y.agree), psi.0.hat, psi.1.hat, psi.2.hat, psi.3.hat, xsi.0.hat, xsi.1.hat, regret))
+  return(data.frame(mean(Aopt.dwols == data.test$AOpt.ijk), mean(Y.opt), mean(Y.agree), psi.0.hat, psi.1.hat, psi.2.hat, psi.3.hat, xsi.0.hat, xsi.1.hat, mean(regret)))
 }
 
 
