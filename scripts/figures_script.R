@@ -28,6 +28,8 @@ library(dplyr)
 
 one_stage_trt_mis <- readRDS(here::here("results", "one_stage_trt_mis.rds"))
 
+names(one_stage_trt_mis) <- c("AOpts_one_trt_mis", "YOpts_one_trt_mis", "Regret_one_trt_mis", "Psi_M1_one_trt_mis", "Psi_M2_one_trt_mis", "Psi_M3_one_trt_mis", "Xsi_M1_one_trt_mis", "Xsi_M2_one_trt_mis", "Xsi_M3_one_trt_mis", "Min_alters_one_trt_mis", "Max_alters_one_trt_mis", "Mean_alters_one_trt_mis", "Median_alters_one_trt_mis")
+
 AOpts.df <- one_stage_trt_mis$AOpts_one_trt_mis
 YOpts.df <- one_stage_trt_mis$YOpts_one_trt_mis
 Regret.df <- one_stage_trt_mis$Regret_one_trt_mis
@@ -133,6 +135,8 @@ ggsave(here::here("results", "sims_one_trt_mis_xsi1_bp.pdf"), plot = bp.xsi1)
 
 one_stage_trt_fr_mis <- readRDS(here::here("results", "one_stage_trt_fr_mis.rds"))
 
+names(one_stage_trt_fr_mis) <- c("AOpts_one_trt_fr_mis", "YOpts_one_trt_fr_mis", "Regret_one_trt_fr_mis", "Psi_M1_one_trt_fr_mis", "Psi_M2_one_trt_fr_mis", "Psi_M3_one_trt_fr_mis", "Xsi_M1_one_trt_fr_mis", "Xsi_M2_one_trt_fr_mis", "Xsi_M3_one_trt_fr_mis", "Min_alters_one_trt_fr_mis", "Max_alters_one_trt_fr_mis", "Mean_alters_one_trt_fr_mis", "Median_alters_one_trt_fr_mis")
+
 AOpts.df <- one_stage_trt_mis$AOpts_one_trt_fr_mis
 YOpts.df <- one_stage_trt_mis$YOpts_one_trt_fr_mis
 Regret.df <- one_stage_trt_mis$Regret_one_trt_fr_mis
@@ -234,6 +238,8 @@ ggsave(here::here("results", "sims_one_trt_fr_mis_xsi1_bp.pdf"), plot = bp.xsi1)
 #One Stage: Both Trt and Trt Free Models Mis-specified
 
 one_stage_trt_and_trt_fr_mis <- readRDS(here::here("results", "one_stage_trt_and_trt_fr_mis.rds"))
+
+names(one_stage_trt_and_trt_fr_mis) <- c("AOpts_one_trt_and_trt_fr_mis", "YOpts_one_trt_and_trt_fr_mis", "Regret_one_trt_and_trt_fr_mis", "Psi_M1_one_trt_and_trt_fr_mis", "Psi_M2_one_trt_and_trt_fr_mis", "Psi_M3_one_trt_and_trt_fr_mis", "Xsi_M1_one_trt_and_trt_fr_mis", "Xsi_M2_one_trt_and_trt_fr_mis", "Xsi_M3_one_trt_and_trt_fr_mis", "Min_alters_one_trt_and_trt_fr_mis", "Max_alters_one_trt_and_trt_fr_mis", "Mean_alters_one_trt_and_trt_fr_mis", "Median_alters_one_trt_and_trt_fr_mis")
 
 AOpts.df <- one_stage_trt_and_trt_fr_mis$AOpts_one_trt_and_trt_fr_mis
 YOpts.df <- one_stage_trt_and_trt_fr_mis$YOpts_one_trt_and_trt_fr_mis
@@ -338,6 +344,8 @@ ggsave(here::here("results", "sims_one_trt_and_trt_fr_mis_xsi1_bp.pdf"), plot = 
 
 one_stage_trt_and_trt_fr_correct <- readRDS(here::here("results", "one_stage_trt_and_trt_fr_correct.rds"))
 
+names(one_stage_trt_and_trt_fr_correct) <- c("AOpts_one_trt_and_trt_fr_correct", "YOpts_one_trt_and_trt_fr_correct", "Regret_one_trt_and_trt_fr_correct", "Psi_M1_one_trt_and_trt_fr_correct", "Psi_M2_one_trt_and_trt_fr_correct", "Psi_M3_one_trt_and_trt_fr_correct", "Xsi_M1_one_trt_and_trt_fr_correct", "Xsi_M2_one_trt_and_trt_fr_correct", "Xsi_M3_one_trt_and_trt_fr_correct", "Min_alters_one_trt_and_trt_fr_correct", "Max_alters_one_trt_and_trt_fr_correct", "Mean_alters_one_trt_and_trt_fr_correct", "Median_alters_one_trt_and_trt_fr_correct")
+
 AOpts.df <- one_stage_trt_and_trt_fr_correct$AOpts_one_stage_trt_and_trt_fr_correct
 YOpts.df <- one_stage_trt_and_trt_fr_correct$YOpts_one_stage_trt_and_trt_fr_correct
 Regret.df <- one_stage_trt_and_trt_fr_correct$Regret_one_stage_trt_and_trt_fr_correct
@@ -440,6 +448,8 @@ ggsave(here::here("results", "sims_one_trt_and_trt_fr_correct_xsi1_bp.pdf"), plo
 #Two Stage: Trt Mis-specified
 
 sims_two_stage_trt_mis <- readRDS(here::here("results", "sims_two_stage_trt_mis.rds"))
+
+names(sims_two_stage_trt_mis) <- c("TwoStage_results_both_trt_mis", "TwoStage_results_both__resc_trt_mis", "TwoStage_results_wthn_trt_mis", "TwoStage_results_standard_trt_mis", "TwoStage_min_num_trt_mis", "TwoStage_max_num_trt_mis", "TwoStage_mean_num_trt_mis", "TwoStage_median_num_trt_mis")
 
 run <- 1000
 Results.both <- sims_two_stage_trt_mis$TwoStage_results_both_trt_mis
@@ -620,6 +630,8 @@ ggsave(here::here("results", "sims_two_trt_mis_stagetwo_xsi_standard_bp.pdf"), p
 #Two Stage: Trt Free Mis-specified
 sims_two_stage_trt_fr_mis <- readRDS(here::here("results", "sims_two_stage_trt_fr_mis.rds"))
 
+names(sims_two_stage_trt_fr_mis) <- c("TwoStage_results_both_trt_fr_mis", "TwoStage_results_both__resc_trt_fr_mis", "TwoStage_results_wthn_trt_fr_mis", "TwoStage_results_standard_trt_fr_mis", "TwoStage_min_num_trt_fr_mis", "TwoStage_max_num_trt_fr_mis", "TwoStage_mean_num_trt_fr_mis", "TwoStage_median_num_trt_fr_mis")
+
 run <- 1000
 Results.both <- sims_two_stage_trt_fr_mis$TwoStage_results_both_trt_fr_mis
 Results.both.resc <- sims_two_stage_trt_fr_mis$TwoStage_results_both__resc_trt_fr_mis
@@ -799,6 +811,8 @@ ggsave(here::here("results", "sims_two_trt_fr_mis_stagetwo_xsi_standard_bp.pdf")
 
 #Two Stage: Trt Free Mis-specified Variation 2
 sims_two_stage_trt_fr_mis_variation <- readRDS(here::here("results", "sims_two_stage_trt_fr_mis_variation.rds"))
+
+names(sims_two_stage_trt_fr_mis_variation) <- c("TwoStage_results_both_trt_fr_mis_var", "TwoStage_results_both__resc_trt_fr_mis_var", "TwoStage_results_wthn_trt_fr_mis_var", "TwoStage_results_standard_trt_fr_mis_var", "TwoStage_min_num_trt_fr_mis_var", "TwoStage_max_num_trt_fr_mis_var", "TwoStage_mean_num_trt_fr_mis_var", "TwoStage_median_num_trt_fr_mis_var")
 
 run <- 1000
 Results.both <- sims_two_stage_trt_fr_mis_variation$TwoStage_results_both_trt_fr_mis_var
@@ -985,6 +999,8 @@ ggsave(here::here("results", "sims_two_trt_fr_mis_var_stagetwo_xsi_standard_bp.p
 
 study1b_extension_trt_mis <- readRDS(here::here("results", "study1b_extension_trt_mis.rds"))
 
+names(study1b_extension_trt_mis) <- c("AOpts_study1b_ext_trt_mis", "YOpts_study1b_ext_trt_mis", "Regret_study1b_ext_trt_mis", "Psi_Dw_study1b_ext_trt_mis", "Psi_M1_study1b_ext_trt_mis", "Psi_M2_study1b_ext_trt_mis", "Psi_M3_study1b_ext_trt_mis", "Psi_M4_study1b_ext_trt_mis", "Psi_M5_study1b_ext_trt_mis", "Xsi_Dw_study1b_ext_trt_mis", "Xsi_M1_study1b_ext_trt_mis", "Xsi_M2_study1b_ext_trt_mis", "Xsi_M3_study1b_ext_trt_mis", "Xsi_M4_study1b_ext_trt_mis", "Xsi_M5_study1b_ext_trt_mis", "Mean_W_alters_study1b_ext_trt_mis", "Mean_B_alters_study1b_ext_trt_mis")
+
 AOpts.df <- study1b_extension_trt_mis$AOpts_study1b_ext_trt_mis
 YOpts.df <- study1b_extension_trt_mis$YOpts_study1b_ext_trt_mis
 Regret.df <- study1b_extension_trt_mis$Regret_study1b_ext_trt_mis
@@ -1114,6 +1130,8 @@ ggsave(here::here("results", "sims_1b_extension_trt_mis_xsi1_bp.pdf"), plot = bp
 
 study1b_extension_trt_fr_mis <- readRDS(here::here("results", "study1b_extension_trt_fr_mis.rds"))
 
+names(study1b_extension_trt_fr_mis) <- c("AOpts_study1b_ext_trt_fr_mis", "YOpts_study1b_ext_trt_fr_mis", "Regret_study1b_ext_trt_fr_mis", "Psi_Dw_study1b_ext_trt_fr_mis", "Psi_M1_study1b_ext_trt_fr_mis", "Psi_M2_study1b_ext_trt_fr_mis", "Psi_M3_study1b_ext_trt_fr_mis", "Psi_M4_study1b_ext_trt_fr_mis", "Psi_M5_study1b_ext_trt_fr_mis", "Xsi_Dw_study1b_ext_trt_fr_mis", "Xsi_M1_study1b_ext_trt_fr_mis", "Xsi_M2_study1b_ext_trt_fr_mis", "Xsi_M3_study1b_ext_trt_fr_mis", "Xsi_M4_study1b_ext_trt_fr_mis", "Xsi_M5_study1b_ext_trt_fr_mis", "Mean_W_alters_study1b_ext_trt_fr_mis", "Mean_B_alters_study1b_ext_trt_fr_mis")
+
 AOpts.df <- study1b_extension_trt_fr_mis$AOpts_study1b_ext_trt_fr_mis
 YOpts.df <- study1b_extension_trt_fr_mis$YOpts_study1b_ext_trt_fr_mis
 Regret.df <- study1b_extension_trt_fr_mis$Regret_study1b_ext_trt_fr_mis
@@ -1242,6 +1260,8 @@ ggsave(here::here("results", "sims_1b_extension_trt_fr_mis_xsi1_bp.pdf"), plot =
 #***************************************************************************************************
 
 study1b_1to5 <- readRDS(here::here("results", "study1b_1to5.rds"))
+
+names(study1b_1to5) <- c("AOpts_study1b_1to5", "YOpts_study1b_1to5", "Regret_study1b_1to5", "Psi_Dw_study1b_1to5", "Psi_M1_study1b_1to5", "Psi_M2_study1b_1to5", "Psi_M3_study1b_1to5", "Psi_M4_study1b_1to5", "Psi_M5_study1b_1to5", "Psi_M6_study1b_1to5", "Psi_M7_study1b_1to5", "Psi_M8_study1b_1to5", "Psi_M9_study1b_1to5", "Xsi_Dw_study1b_1to5", "Xsi_M1_study1b_1to5", "Xsi_M2_study1b_1to5", "Xsi_M3_study1b_1to5", "Xsi_M4_study1b_1to5", "Xsi_M5_study1b_1to5", "Xsi_M6_study1b_1to5", "Xsi_M7_study1b_1to5", "Xsi_M8_study1b_1to5", "Xsi_M9_study1b_1to5", "Mean_W_alters_study1b_1to5", "Mean_B_alters_study1b_1to5")
 
 #One Stage: ego-alter treatment-free model components mis-specified, treatment model correct, scenarios 1-5
 
@@ -1410,6 +1430,8 @@ ggsave(here::here("results", "sims_1b_1to5_xsi1_bp.pdf"), plot = bp.xsi1)
 #One Stage: ego-alter treatment-free model components mis-specified, treatment model incorrect, scenarios 6-10
 
 study1b_6to10 <- readRDS(here::here("results", "study1b_6to10.rds"))
+
+names(study1b_6to10) <- c("AOpts_study1b_6to10", "YOpts_study1b_6to10", "Regret_study1b_6to10", "Psi_Dw_study1b_6to10", "Psi_M1_study1b_6to10", "Psi_M2_study1b_6to10", "Psi_M3_study1b_6to10", "Psi_M4_study1b_6to10", "Psi_M5_study1b_6to10", "Psi_M6_study1b_6to10", "Psi_M7_study1b_6to10", "Psi_M8_study1b_6to10", "Psi_M9_study1b_6to10", "Xsi_Dw_study1b_6to10", "Xsi_M1_study1b_6to10", "Xsi_M2_study1b_6to10", "Xsi_M3_study1b_6to10", "Xsi_M4_study1b_6to10", "Xsi_M5_study1b_6to10", "Xsi_M6_study1b_6to10", "Xsi_M7_study1b_6to10", "Xsi_M8_study1b_6to10", "Xsi_M9_study1b_6to10", "Mean_W_alters_study1b_6to10", "Mean_B_alters_study1b_6to10")
 
 AOpts.df <- study1b_6to10$AOpts_study1b_6to10
 YOpts.df <- study1b_6to10$YOpts_study1b_6to10
