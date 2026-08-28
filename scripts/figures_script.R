@@ -137,15 +137,15 @@ one_stage_trt_fr_mis <- readRDS(here::here("results", "one_stage_trt_fr_mis.rds"
 
 names(one_stage_trt_fr_mis) <- c("AOpts_one_trt_fr_mis", "YOpts_one_trt_fr_mis", "Regret_one_trt_fr_mis", "Psi_M1_one_trt_fr_mis", "Psi_M2_one_trt_fr_mis", "Psi_M3_one_trt_fr_mis", "Xsi_M1_one_trt_fr_mis", "Xsi_M2_one_trt_fr_mis", "Xsi_M3_one_trt_fr_mis", "Min_alters_one_trt_fr_mis", "Max_alters_one_trt_fr_mis", "Mean_alters_one_trt_fr_mis", "Median_alters_one_trt_fr_mis")
 
-AOpts.df <- one_stage_trt_mis$AOpts_one_trt_fr_mis
-YOpts.df <- one_stage_trt_mis$YOpts_one_trt_fr_mis
-Regret.df <- one_stage_trt_mis$Regret_one_trt_fr_mis
-Psi.M1 <- one_stage_trt_mis$Psi_M1_one_trt_fr_mis
-Psi.M2 <- one_stage_trt_mis$Psi_M2_one_trt_fr_mis
-Psi.M3 <- one_stage_trt_mis$Psi_M3_one_trt_fr_mis
-Xsi.M1 <- one_stage_trt_mis$Xsi_M1_one_trt_fr_mis
-Xsi.M2 <- one_stage_trt_mis$Xsi_M2_one_trt_fr_mis
-Xsi.M3 <- one_stage_trt_mis$Xsi_M3_one_trt_fr_mis
+AOpts.df <- one_stage_trt_fr_mis$AOpts_one_trt_fr_mis
+YOpts.df <- one_stage_trt_fr_mis$YOpts_one_trt_fr_mis
+Regret.df <- one_stage_trt_fr_mis$Regret_one_trt_fr_mis
+Psi.M1 <- one_stage_trt_fr_mis$Psi_M1_one_trt_fr_mis
+Psi.M2 <- one_stage_trt_fr_mis$Psi_M2_one_trt_fr_mis
+Psi.M3 <- one_stage_trt_fr_mis$Psi_M3_one_trt_fr_mis
+Xsi.M1 <- one_stage_trt_fr_mis$Xsi_M1_one_trt_fr_mis
+Xsi.M2 <- one_stage_trt_fr_mis$Xsi_M2_one_trt_fr_mis
+Xsi.M3 <- one_stage_trt_fr_mis$Xsi_M3_one_trt_fr_mis
 
 #Provides numerical, tabular summary of optimal treatment rates and regrets across methods
 plot_trt_rates <- na.omit(AOpts.df) %>%
@@ -346,15 +346,15 @@ one_stage_trt_and_trt_fr_correct <- readRDS(here::here("results", "one_stage_trt
 
 names(one_stage_trt_and_trt_fr_correct) <- c("AOpts_one_trt_and_trt_fr_correct", "YOpts_one_trt_and_trt_fr_correct", "Regret_one_trt_and_trt_fr_correct", "Psi_M1_one_trt_and_trt_fr_correct", "Psi_M2_one_trt_and_trt_fr_correct", "Psi_M3_one_trt_and_trt_fr_correct", "Xsi_M1_one_trt_and_trt_fr_correct", "Xsi_M2_one_trt_and_trt_fr_correct", "Xsi_M3_one_trt_and_trt_fr_correct", "Min_alters_one_trt_and_trt_fr_correct", "Max_alters_one_trt_and_trt_fr_correct", "Mean_alters_one_trt_and_trt_fr_correct", "Median_alters_one_trt_and_trt_fr_correct")
 
-AOpts.df <- one_stage_trt_and_trt_fr_correct$AOpts_one_stage_trt_and_trt_fr_correct
-YOpts.df <- one_stage_trt_and_trt_fr_correct$YOpts_one_stage_trt_and_trt_fr_correct
-Regret.df <- one_stage_trt_and_trt_fr_correct$Regret_one_stage_trt_and_trt_fr_correct
-Psi.M1 <- one_stage_trt_and_trt_fr_correct$Psi_M1_one_stage_trt_and_trt_fr_correct
-Psi.M2 <- one_stage_trt_and_trt_fr_correct$Psi_M2_one_stage_trt_and_trt_fr_correct
-Psi.M3 <- one_stage_trt_and_trt_fr_correct$Psi_M3_one_stage_trt_and_trt_fr_correct
-Xsi.M1 <- one_stage_trt_and_trt_fr_correct$Xsi_M1_one_stage_trt_and_trt_fr_correct
-Xsi.M2 <- one_stage_trt_and_trt_fr_correct$Xsi_M2_one_stage_trt_and_trt_fr_correct
-Xsi.M3 <- one_stage_trt_and_trt_fr_correct$Xsi_M3_one_stage_trt_and_trt_fr_correct
+AOpts.df <- one_stage_trt_and_trt_fr_correct$AOpts_one_trt_and_trt_fr_correct
+YOpts.df <- one_stage_trt_and_trt_fr_correct$YOpts_one_trt_and_trt_fr_correct
+Regret.df <- one_stage_trt_and_trt_fr_correct$Regret_one_trt_and_trt_fr_correct
+Psi.M1 <- one_stage_trt_and_trt_fr_correct$Psi_M1_one_trt_and_trt_fr_correct
+Psi.M2 <- one_stage_trt_and_trt_fr_correct$Psi_M2_one_trt_and_trt_fr_correct
+Psi.M3 <- one_stage_trt_and_trt_fr_correct$Psi_M3_one_trt_and_trt_fr_correct
+Xsi.M1 <- one_stage_trt_and_trt_fr_correct$Xsi_M1_one_trt_and_trt_fr_correct
+Xsi.M2 <- one_stage_trt_and_trt_fr_correct$Xsi_M2_one_trt_and_trt_fr_correct
+Xsi.M3 <- one_stage_trt_and_trt_fr_correct$Xsi_M3_one_trt_and_trt_fr_correct
 
 #Provides numerical, tabular summary of optimal treatment rates and regrets across methods
 plot_trt_rates <- na.omit(AOpts.df) %>%
