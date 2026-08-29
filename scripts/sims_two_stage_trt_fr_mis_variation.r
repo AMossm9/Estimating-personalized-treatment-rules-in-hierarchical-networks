@@ -806,14 +806,14 @@ dwols.wthn <- function(data.sim, data.test, I, J, n) {
   Yopt.test <- data.test$Y.ijk + (Aopt.dwols.2.test-data.test$A.ijk.2)*(psi.0.stage2 + psi.1.stage2*data.test$X.ijk.2 + psi.2.stage2*data.test$total.w.2 + psi.3.stage2*data.test$V.i.2*data.test$total.w.2) + (Aopt.dwols.1.test-data.test$A.ijk.1)*(psi.0.stage1 + psi.1.stage1*data.test$X.ijk.1 + psi.2.stage1*data.test$total.w.1 + psi.3.stage1*data.test$V.i.1*data.test$total.w.1)
   regret.dwols.1 <- (Aopt.dwols.1.test-data.test$A.ijk.1)*(psi.0.stage1 + psi.1.stage1*data.test$X.ijk.1 + psi.2.stage1*data.test$total.w.1 + psi.3.stage1*data.test$V.i.1*data.test$total.w.1)
   regret.dwols.2 <- (Aopt.dwols.2.test-data.test$A.ijk.2)*(psi.0.stage2 + psi.1.stage2*data.test$X.ijk.2 + psi.2.stage2*data.test$total.w.2 + psi.3.stage2*data.test$V.i.2*data.test$total.w.2)
-  regret.dwols.total <- regret.dwols.1 + regret.dwols.2
+  regret.total <- regret.dwols.1 + regret.dwols.2
   #Aopt.dwols.obs <- as.numeric((psi.0.hat + psi.1.hat*data.sim$X.ijk) > 0)
   
   #Mean of outcomes where treatment we observe is the same as the dwols optimal
   #treatment for our given dataset
   #Y.agree <- mean(data.sim$Y.ijk[data.sim$A.ijk == Aopt.dwols.obs])
   
-  return(data.frame(Aopt.dwols.1.test, Aopt.dwols.2.test, Yopt.test, psi.0.stage1, psi.1.stage1, psi.2.stage1, psi.3.stage1, psi.0.stage2, psi.1.stage2, psi.2.stage2, psi.3.stage2, xsi.0.stage1, xsi.1.stage1, xsi.0.stage2, xsi.1.stage2, regret.dwols.1, regret.dwols.2, regret.dwols.total))
+  return(data.frame(Aopt.dwols.1.test, Aopt.dwols.2.test, Yopt.test, psi.0.stage1, psi.1.stage1, psi.2.stage1, psi.3.stage1, psi.0.stage2, psi.1.stage2, psi.2.stage2, psi.3.stage2, xsi.0.stage1, xsi.1.stage1, xsi.0.stage2, xsi.1.stage2, regret.dwols.1, regret.dwols.2, regret.total))
 }
 
 dwols.standard <- function(data.sim, data.test, I, J, n) {
