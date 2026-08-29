@@ -468,6 +468,20 @@ dwols.out.df$Outcome <- factor(dwols.out.df$Outcome, levels=c("ME1","ME2", "ME3"
 bp.twostage.out <- ggplot(dwols.out.df, aes(y=YOpts, fill=Outcome)) + 
   geom_boxplot() + scale_fill_grey(start=0.8, end=0.4) + ylab("Optimal Outcome") + theme(text = element_text(size = 14))
 
+total.regret.df <- data.frame(Regret = c(c(Results.wthn$REGRET.TOTAL.WTHN), c(Results.standard$REGRET.TOTAL.STANDARD), c(Results.both$REGRET.TOTAL.BOTH),c(Results.both.resc$REGRET.TOTAL.BOTH.RESC)), Method = rep(c("ME1","ME2", "ME3","ME4"),each=1000))
+
+plot_regrets <- na.omit(total.regret.df) %>%
+  group_by(Method) %>%
+  summarize(n = n(),
+         median = median(Regret),
+         mean = mean(Regret),
+         sd = sd(Regret),
+         empse = sqrt((sum((Regret-mean(Regret))^2))/(n-1)),
+         .groups="keep")
+
+plot_regrets
+
+write.csv(plot_regrets, here::here("results", "sims_two_trt_mis_regret_tbl.csv"))
 
 dwols.psi.stage1.df <- data.frame(Psi = c(c(Results.both$PSI.0.STAGE1.BOTH),c(Results.both$PSI.1.STAGE1.BOTH),c(Results.both$PSI.2.STAGE1.BOTH),c(Results.both$PSI.3.STAGE1.BOTH)), Blip = rep(c("Psi0", "Psi1", "Psi2", "Psi3"),each=1000))
 dwols.psi.stage2.df <- data.frame(Psi = c(c(Results.both$PSI.0.STAGE2.BOTH),c(Results.both$PSI.1.STAGE2.BOTH),c(Results.both$PSI.2.STAGE2.BOTH),c(Results.both$PSI.3.STAGE2.BOTH)), Blip = rep(c("Psi0", "Psi1", "Psi2", "Psi3"),each=1000))
@@ -649,6 +663,20 @@ dwols.out.df$Outcome <- factor(dwols.out.df$Outcome, levels=c("ME1","ME2", "ME3"
 bp.twostage.out <- ggplot(dwols.out.df, aes(y=YOpts, fill=Outcome)) + 
   geom_boxplot() + scale_fill_grey(start=0.8, end=0.4) + ylab("Optimal Outcome") + theme(text = element_text(size = 14))
 
+total.regret.df <- data.frame(Regret = c(c(Results.wthn$REGRET.TOTAL.WTHN), c(Results.standard$REGRET.TOTAL.STANDARD), c(Results.both$REGRET.TOTAL.BOTH),c(Results.both.resc$REGRET.TOTAL.BOTH.RESC)), Method = rep(c("ME1","ME2", "ME3","ME4"),each=1000))
+
+plot_regrets <- na.omit(total.regret.df) %>%
+  group_by(Method) %>%
+  summarize(n = n(),
+         median = median(Regret),
+         mean = mean(Regret),
+         sd = sd(Regret),
+         empse = sqrt((sum((Regret-mean(Regret))^2))/(n-1)),
+         .groups="keep")
+
+plot_regrets
+
+write.csv(plot_regrets, here::here("results", "sims_two_trt_fr_mis_regret_tbl.csv"))
 
 dwols.psi.stage1.df <- data.frame(Psi = c(c(Results.both$PSI.0.STAGE1.BOTH),c(Results.both$PSI.1.STAGE1.BOTH),c(Results.both$PSI.2.STAGE1.BOTH),c(Results.both$PSI.3.STAGE1.BOTH)), Blip = rep(c("Psi0", "Psi1", "Psi2", "Psi3"),each=1000))
 dwols.psi.stage2.df <- data.frame(Psi = c(c(Results.both$PSI.0.STAGE2.BOTH),c(Results.both$PSI.1.STAGE2.BOTH),c(Results.both$PSI.2.STAGE2.BOTH),c(Results.both$PSI.3.STAGE2.BOTH)), Blip = rep(c("Psi0", "Psi1", "Psi2", "Psi3"),each=1000))
@@ -831,6 +859,20 @@ dwols.out.df$Outcome <- factor(dwols.out.df$Outcome, levels=c("ME1","ME2", "ME3"
 bp.twostage.out <- ggplot(dwols.out.df, aes(y=YOpts, fill=Outcome)) + 
   geom_boxplot() + scale_fill_grey(start=0.8, end=0.4) + ylab("Optimal Outcome") + theme(text = element_text(size = 14))
 
+total.regret.df <- data.frame(Regret = c(c(Results.wthn$REGRET.TOTAL.WTHN), c(Results.standard$REGRET.TOTAL.STANDARD), c(Results.both$REGRET.TOTAL.BOTH),c(Results.both.resc$REGRET.TOTAL.BOTH.RESC)), Method = rep(c("ME1","ME2", "ME3","ME4"),each=1000))
+
+plot_regrets <- na.omit(total.regret.df) %>%
+  group_by(Method) %>%
+  summarize(n = n(),
+         median = median(Regret),
+         mean = mean(Regret),
+         sd = sd(Regret),
+         empse = sqrt((sum((Regret-mean(Regret))^2))/(n-1)),
+         .groups="keep")
+
+plot_regrets
+
+write.csv(plot_regrets, here::here("results", "sims_two_trt_fr_mis_var_regret_tbl.csv"))
 
 dwols.psi.stage1.df <- data.frame(Psi = c(c(Results.both$PSI.0.STAGE1.BOTH),c(Results.both$PSI.1.STAGE1.BOTH),c(Results.both$PSI.2.STAGE1.BOTH),c(Results.both$PSI.3.STAGE1.BOTH)), Blip = rep(c("Psi0", "Psi1", "Psi2", "Psi3"),each=1000))
 dwols.psi.stage2.df <- data.frame(Psi = c(c(Results.both$PSI.0.STAGE2.BOTH),c(Results.both$PSI.1.STAGE2.BOTH),c(Results.both$PSI.2.STAGE2.BOTH),c(Results.both$PSI.3.STAGE2.BOTH)), Blip = rep(c("Psi0", "Psi1", "Psi2", "Psi3"),each=1000))
