@@ -468,9 +468,11 @@ dwols.out.df$Outcome <- factor(dwols.out.df$Outcome, levels=c("ME1","ME2", "ME3"
 bp.twostage.out <- ggplot(dwols.out.df, aes(y=YOpts, fill=Outcome)) + 
   geom_boxplot() + scale_fill_grey(start=0.8, end=0.4) + ylab("Optimal Outcome") + theme(text = element_text(size = 14))
 
+stage1.regret.df <- data.frame(Regret = c(c(Results.wthn$REGRET.STAGE1.WTHN), c(Results.standard$REGRET.STAGE1.STANDARD), c(Results.both$REGRET.STAGE1.BOTH),c(Results.both.resc$REGRET.STAGE1.BOTH.RESC)), Method = rep(c("ME1","ME2", "ME3","ME4"),each=1000))
+stage2.regret.df <- data.frame(Regret = c(c(Results.wthn$REGRET.STAGE2.WTHN), c(Results.standard$REGRET.STAGE2.STANDARD), c(Results.both$REGRET.STAGE2.BOTH),c(Results.both.resc$REGRET.STAGE2.BOTH.RESC)), Method = rep(c("ME1","ME2", "ME3","ME4"),each=1000))
 total.regret.df <- data.frame(Regret = c(c(Results.wthn$REGRET.TOTAL.WTHN), c(Results.standard$REGRET.TOTAL.STANDARD), c(Results.both$REGRET.TOTAL.BOTH),c(Results.both.resc$REGRET.TOTAL.BOTH.RESC)), Method = rep(c("ME1","ME2", "ME3","ME4"),each=1000))
 
-plot_regrets <- na.omit(total.regret.df) %>%
+plot_regrets_stage1 <- na.omit(stage1.regret.df) %>%
   group_by(Method) %>%
   summarize(n = n(),
          median = median(Regret),
@@ -479,9 +481,33 @@ plot_regrets <- na.omit(total.regret.df) %>%
          empse = sqrt((sum((Regret-mean(Regret))^2))/(n-1)),
          .groups="keep")
 
-plot_regrets
+plot_regrets_stage1
 
-write.csv(plot_regrets, here::here("results", "sims_two_trt_mis_regret_tbl.csv"))
+plot_regrets_stage2 <- na.omit(stage2.regret.df) %>%
+  group_by(Method) %>%
+  summarize(n = n(),
+         median = median(Regret),
+         mean = mean(Regret),
+         sd = sd(Regret),
+         empse = sqrt((sum((Regret-mean(Regret))^2))/(n-1)),
+         .groups="keep")
+
+plot_regrets_stage2
+
+plot_regrets_total <- na.omit(total.regret.df) %>%
+  group_by(Method) %>%
+  summarize(n = n(),
+         median = median(Regret),
+         mean = mean(Regret),
+         sd = sd(Regret),
+         empse = sqrt((sum((Regret-mean(Regret))^2))/(n-1)),
+         .groups="keep")
+
+plot_regrets_total
+
+write.csv(plot_regrets_stage1, here::here("results", "sims_two_trt_mis_regret_stage1_tbl.csv"))
+write.csv(plot_regrets_stage2, here::here("results", "sims_two_trt_mis_regret_stage2_tbl.csv"))
+write.csv(plot_regrets_total, here::here("results", "sims_two_trt_mis_regret_total_tbl.csv"))
 
 dwols.psi.stage1.df <- data.frame(Psi = c(c(Results.both$PSI.0.STAGE1.BOTH),c(Results.both$PSI.1.STAGE1.BOTH),c(Results.both$PSI.2.STAGE1.BOTH),c(Results.both$PSI.3.STAGE1.BOTH)), Blip = rep(c("Psi0", "Psi1", "Psi2", "Psi3"),each=1000))
 dwols.psi.stage2.df <- data.frame(Psi = c(c(Results.both$PSI.0.STAGE2.BOTH),c(Results.both$PSI.1.STAGE2.BOTH),c(Results.both$PSI.2.STAGE2.BOTH),c(Results.both$PSI.3.STAGE2.BOTH)), Blip = rep(c("Psi0", "Psi1", "Psi2", "Psi3"),each=1000))
@@ -663,9 +689,11 @@ dwols.out.df$Outcome <- factor(dwols.out.df$Outcome, levels=c("ME1","ME2", "ME3"
 bp.twostage.out <- ggplot(dwols.out.df, aes(y=YOpts, fill=Outcome)) + 
   geom_boxplot() + scale_fill_grey(start=0.8, end=0.4) + ylab("Optimal Outcome") + theme(text = element_text(size = 14))
 
+stage1.regret.df <- data.frame(Regret = c(c(Results.wthn$REGRET.STAGE1.WTHN), c(Results.standard$REGRET.STAGE1.STANDARD), c(Results.both$REGRET.STAGE1.BOTH),c(Results.both.resc$REGRET.STAGE1.BOTH.RESC)), Method = rep(c("ME1","ME2", "ME3","ME4"),each=1000))
+stage2.regret.df <- data.frame(Regret = c(c(Results.wthn$REGRET.STAGE2.WTHN), c(Results.standard$REGRET.STAGE2.STANDARD), c(Results.both$REGRET.STAGE2.BOTH),c(Results.both.resc$REGRET.STAGE2.BOTH.RESC)), Method = rep(c("ME1","ME2", "ME3","ME4"),each=1000))
 total.regret.df <- data.frame(Regret = c(c(Results.wthn$REGRET.TOTAL.WTHN), c(Results.standard$REGRET.TOTAL.STANDARD), c(Results.both$REGRET.TOTAL.BOTH),c(Results.both.resc$REGRET.TOTAL.BOTH.RESC)), Method = rep(c("ME1","ME2", "ME3","ME4"),each=1000))
 
-plot_regrets <- na.omit(total.regret.df) %>%
+plot_regrets_stage1 <- na.omit(stage1.regret.df) %>%
   group_by(Method) %>%
   summarize(n = n(),
          median = median(Regret),
@@ -674,9 +702,33 @@ plot_regrets <- na.omit(total.regret.df) %>%
          empse = sqrt((sum((Regret-mean(Regret))^2))/(n-1)),
          .groups="keep")
 
-plot_regrets
+plot_regrets_stage1
 
-write.csv(plot_regrets, here::here("results", "sims_two_trt_fr_mis_regret_tbl.csv"))
+plot_regrets_stage2 <- na.omit(stage2.regret.df) %>%
+  group_by(Method) %>%
+  summarize(n = n(),
+         median = median(Regret),
+         mean = mean(Regret),
+         sd = sd(Regret),
+         empse = sqrt((sum((Regret-mean(Regret))^2))/(n-1)),
+         .groups="keep")
+
+plot_regrets_stage2
+
+plot_regrets_total <- na.omit(total.regret.df) %>%
+  group_by(Method) %>%
+  summarize(n = n(),
+         median = median(Regret),
+         mean = mean(Regret),
+         sd = sd(Regret),
+         empse = sqrt((sum((Regret-mean(Regret))^2))/(n-1)),
+         .groups="keep")
+
+plot_regrets_total
+
+write.csv(plot_regrets_stage1, here::here("results", "sims_two_trt_fr_mis_regret_stage1_tbl.csv"))
+write.csv(plot_regrets_stage2, here::here("results", "sims_two_trt_fr_mis_regret_stage2_tbl.csv"))
+write.csv(plot_regrets_total, here::here("results", "sims_two_trt_fr_mis_regret_total_tbl.csv"))
 
 dwols.psi.stage1.df <- data.frame(Psi = c(c(Results.both$PSI.0.STAGE1.BOTH),c(Results.both$PSI.1.STAGE1.BOTH),c(Results.both$PSI.2.STAGE1.BOTH),c(Results.both$PSI.3.STAGE1.BOTH)), Blip = rep(c("Psi0", "Psi1", "Psi2", "Psi3"),each=1000))
 dwols.psi.stage2.df <- data.frame(Psi = c(c(Results.both$PSI.0.STAGE2.BOTH),c(Results.both$PSI.1.STAGE2.BOTH),c(Results.both$PSI.2.STAGE2.BOTH),c(Results.both$PSI.3.STAGE2.BOTH)), Blip = rep(c("Psi0", "Psi1", "Psi2", "Psi3"),each=1000))
@@ -859,9 +911,11 @@ dwols.out.df$Outcome <- factor(dwols.out.df$Outcome, levels=c("ME1","ME2", "ME3"
 bp.twostage.out <- ggplot(dwols.out.df, aes(y=YOpts, fill=Outcome)) + 
   geom_boxplot() + scale_fill_grey(start=0.8, end=0.4) + ylab("Optimal Outcome") + theme(text = element_text(size = 14))
 
+stage1.regret.df <- data.frame(Regret = c(c(Results.wthn$REGRET.STAGE1.WTHN), c(Results.standard$REGRET.STAGE1.STANDARD), c(Results.both$REGRET.STAGE1.BOTH),c(Results.both.resc$REGRET.STAGE1.BOTH.RESC)), Method = rep(c("ME1","ME2", "ME3","ME4"),each=1000))
+stage2.regret.df <- data.frame(Regret = c(c(Results.wthn$REGRET.STAGE2.WTHN), c(Results.standard$REGRET.STAGE2.STANDARD), c(Results.both$REGRET.STAGE2.BOTH),c(Results.both.resc$REGRET.STAGE2.BOTH.RESC)), Method = rep(c("ME1","ME2", "ME3","ME4"),each=1000))
 total.regret.df <- data.frame(Regret = c(c(Results.wthn$REGRET.TOTAL.WTHN), c(Results.standard$REGRET.TOTAL.STANDARD), c(Results.both$REGRET.TOTAL.BOTH),c(Results.both.resc$REGRET.TOTAL.BOTH.RESC)), Method = rep(c("ME1","ME2", "ME3","ME4"),each=1000))
 
-plot_regrets <- na.omit(total.regret.df) %>%
+plot_regrets_stage1 <- na.omit(stage1.regret.df) %>%
   group_by(Method) %>%
   summarize(n = n(),
          median = median(Regret),
@@ -870,9 +924,34 @@ plot_regrets <- na.omit(total.regret.df) %>%
          empse = sqrt((sum((Regret-mean(Regret))^2))/(n-1)),
          .groups="keep")
 
-plot_regrets
+plot_regrets_stage1
 
-write.csv(plot_regrets, here::here("results", "sims_two_trt_fr_mis_var_regret_tbl.csv"))
+plot_regrets_stage2 <- na.omit(stage2.regret.df) %>%
+  group_by(Method) %>%
+  summarize(n = n(),
+         median = median(Regret),
+         mean = mean(Regret),
+         sd = sd(Regret),
+         empse = sqrt((sum((Regret-mean(Regret))^2))/(n-1)),
+         .groups="keep")
+
+plot_regrets_stage2
+
+plot_regrets_total <- na.omit(total.regret.df) %>%
+  group_by(Method) %>%
+  summarize(n = n(),
+         median = median(Regret),
+         mean = mean(Regret),
+         sd = sd(Regret),
+         empse = sqrt((sum((Regret-mean(Regret))^2))/(n-1)),
+         .groups="keep")
+
+plot_regrets_total
+
+write.csv(plot_regrets_stage1, here::here("results", "sims_two_trt_fr_mis_var_regret_stage1_tbl.csv"))
+write.csv(plot_regrets_stage2, here::here("results", "sims_two_trt_fr_mis_var_regret_stage2_tbl.csv"))
+write.csv(plot_regrets_total, here::here("results", "sims_two_trt_fr_mis_var_regret_total_tbl.csv"))
+
 
 dwols.psi.stage1.df <- data.frame(Psi = c(c(Results.both$PSI.0.STAGE1.BOTH),c(Results.both$PSI.1.STAGE1.BOTH),c(Results.both$PSI.2.STAGE1.BOTH),c(Results.both$PSI.3.STAGE1.BOTH)), Blip = rep(c("Psi0", "Psi1", "Psi2", "Psi3"),each=1000))
 dwols.psi.stage2.df <- data.frame(Psi = c(c(Results.both$PSI.0.STAGE2.BOTH),c(Results.both$PSI.1.STAGE2.BOTH),c(Results.both$PSI.2.STAGE2.BOTH),c(Results.both$PSI.3.STAGE2.BOTH)), Blip = rep(c("Psi0", "Psi1", "Psi2", "Psi3"),each=1000))
