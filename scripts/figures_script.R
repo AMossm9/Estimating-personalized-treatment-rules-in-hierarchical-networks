@@ -131,6 +131,15 @@ ggsave(here::here("results", "sims_one_trt_mis_psi3_bp.pdf"), plot = bp.psi3)
 ggsave(here::here("results", "sims_one_trt_mis_xsi0_bp.pdf"), plot = bp.xsi0)
 ggsave(here::here("results", "sims_one_trt_mis_xsi1_bp.pdf"), plot = bp.xsi1)
 
+ggsave(here::here("results", "sims_one_trt_mis_trtRate_bp.jpg"), plot = bp.trt)
+ggsave(here::here("results", "sims_one_trt_mis_outcome_bp.jpg"), plot = bp.out)
+ggsave(here::here("results", "sims_one_trt_mis_psi0_bp.jpg"), plot = bp.psi0)
+ggsave(here::here("results", "sims_one_trt_mis_psi1_bp.jpg"), plot = bp.psi1)
+ggsave(here::here("results", "sims_one_trt_mis_psi2_bp.jpg"), plot = bp.psi2)
+ggsave(here::here("results", "sims_one_trt_mis_psi3_bp.jpg"), plot = bp.psi3)
+ggsave(here::here("results", "sims_one_trt_mis_xsi0_bp.jpg"), plot = bp.xsi0)
+ggsave(here::here("results", "sims_one_trt_mis_xsi1_bp.jpg"), plot = bp.xsi1)
+
 #One Stage: Trt Free Mis-specified
 
 one_stage_trt_fr_mis <- readRDS(here::here("results", "one_stage_trt_fr_mis.rds"))
@@ -234,6 +243,15 @@ ggsave(here::here("results", "sims_one_trt_fr_mis_psi2_bp.pdf"), plot = bp.psi2)
 ggsave(here::here("results", "sims_one_trt_fr_mis_psi3_bp.pdf"), plot = bp.psi3)
 ggsave(here::here("results", "sims_one_trt_fr_mis_xsi0_bp.pdf"), plot = bp.xsi0)
 ggsave(here::here("results", "sims_one_trt_fr_mis_xsi1_bp.pdf"), plot = bp.xsi1)
+
+ggsave(here::here("results", "sims_one_trt_fr_mis_trtRate_bp.jpg"), plot = bp.trt)
+ggsave(here::here("results", "sims_one_trt_fr_mis_outcome_bp.jpg"), plot = bp.out)
+ggsave(here::here("results", "sims_one_trt_fr_mis_psi0_bp.jpg"), plot = bp.psi0)
+ggsave(here::here("results", "sims_one_trt_fr_mis_psi1_bp.jpg"), plot = bp.psi1)
+ggsave(here::here("results", "sims_one_trt_fr_mis_psi2_bp.jpg"), plot = bp.psi2)
+ggsave(here::here("results", "sims_one_trt_fr_mis_psi3_bp.jpg"), plot = bp.psi3)
+ggsave(here::here("results", "sims_one_trt_fr_mis_xsi0_bp.jpg"), plot = bp.xsi0)
+ggsave(here::here("results", "sims_one_trt_fr_mis_xsi1_bp.jpg"), plot = bp.xsi1)
 
 #One Stage: Both Trt and Trt Free Models Mis-specified
 
@@ -339,6 +357,15 @@ ggsave(here::here("results", "sims_one_trt_and_trt_fr_mis_psi3_bp.pdf"), plot = 
 ggsave(here::here("results", "sims_one_trt_and_trt_fr_mis_xsi0_bp.pdf"), plot = bp.xsi0)
 ggsave(here::here("results", "sims_one_trt_and_trt_fr_mis_xsi1_bp.pdf"), plot = bp.xsi1)
 
+ggsave(here::here("results", "sims_one_trt_and_trt_fr_mis_trtRate_bp.jpg"), plot = bp.trt)
+ggsave(here::here("results", "sims_one_trt_and_trt_fr_mis_outcome_bp.jpg"), plot = bp.out)
+ggsave(here::here("results", "sims_one_trt_and_trt_fr_mis_psi0_bp.jpg"), plot = bp.psi0)
+ggsave(here::here("results", "sims_one_trt_and_trt_fr_mis_psi1_bp.jpg"), plot = bp.psi1)
+ggsave(here::here("results", "sims_one_trt_and_trt_fr_mis_psi2_bp.jpg"), plot = bp.psi2)
+ggsave(here::here("results", "sims_one_trt_and_trt_fr_mis_psi3_bp.jpg"), plot = bp.psi3)
+ggsave(here::here("results", "sims_one_trt_and_trt_fr_mis_xsi0_bp.jpg"), plot = bp.xsi0)
+ggsave(here::here("results", "sims_one_trt_and_trt_fr_mis_xsi1_bp.jpg"), plot = bp.xsi1)
+
 
 #One Stage: Both Trt and Trt Free Models Correctly Specified
 
@@ -443,6 +470,15 @@ ggsave(here::here("results", "sims_one_trt_and_trt_fr_correct_psi2_bp.pdf"), plo
 ggsave(here::here("results", "sims_one_trt_and_trt_fr_correct_psi3_bp.pdf"), plot = bp.psi3)
 ggsave(here::here("results", "sims_one_trt_and_trt_fr_correct_xsi0_bp.pdf"), plot = bp.xsi0)
 ggsave(here::here("results", "sims_one_trt_and_trt_fr_correct_xsi1_bp.pdf"), plot = bp.xsi1)
+
+ggsave(here::here("results", "sims_one_trt_and_trt_fr_correct_trtRate_bp.jpg"), plot = bp.trt)
+ggsave(here::here("results", "sims_one_trt_and_trt_fr_correct_outcome_bp.jpg"), plot = bp.out)
+ggsave(here::here("results", "sims_one_trt_and_trt_fr_correct_psi0_bp.jpg"), plot = bp.psi0)
+ggsave(here::here("results", "sims_one_trt_and_trt_fr_correct_psi1_bp.jpg"), plot = bp.psi1)
+ggsave(here::here("results", "sims_one_trt_and_trt_fr_correct_psi2_bp.jpg"), plot = bp.psi2)
+ggsave(here::here("results", "sims_one_trt_and_trt_fr_correct_psi3_bp.jpg"), plot = bp.psi3)
+ggsave(here::here("results", "sims_one_trt_and_trt_fr_correct_xsi0_bp.jpg"), plot = bp.xsi0)
+ggsave(here::here("results", "sims_one_trt_and_trt_fr_correct_xsi1_bp.jpg"), plot = bp.xsi1)
 
 
 #Two Stage: Trt Mis-specified
@@ -666,6 +702,17 @@ ggsave(here::here("results", "sims_two_trt_mis_stagetwo_psi_standard_bp.pdf"), p
 ggsave(here::here("results", "sims_two_trt_mis_stageone_xsi_standard_bp.pdf"), plot = bp.stageone.xsi.standard)
 ggsave(here::here("results", "sims_two_trt_mis_stagetwo_xsi_standard_bp.pdf"), plot = bp.stagetwo.xsi.standard)
 
+ggsave(here::here("results", "sims_two_trt_mis_trtRate_bp.jpg"), plot = bp.twostage.trt)
+ggsave(here::here("results", "sims_two_trt_mis_outcome_bp.jpg"), plot = bp.twostage.out)
+ggsave(here::here("results", "sims_two_trt_mis_stageone_psi_bp.jpg"), plot = bp.stageone.psi)
+ggsave(here::here("results", "sims_two_trt_mis_stagetwo_psi_bp.jpg"), plot = bp.stagetwo.psi)
+ggsave(here::here("results", "sims_two_trt_mis_stageone_xsi_bp.jpg"), plot = bp.stageone.xsi)
+ggsave(here::here("results", "sims_two_trt_mis_stagetwo_xsi_bp.jpg"), plot = bp.stagetwo.xsi)
+ggsave(here::here("results", "sims_two_trt_mis_stageone_psi_standard_bp.jpg"), plot = bp.stageone.psi.standard)
+ggsave(here::here("results", "sims_two_trt_mis_stagetwo_psi_standard_bp.jpg"), plot = bp.stagetwo.psi.standard)
+ggsave(here::here("results", "sims_two_trt_mis_stageone_xsi_standard_bp.jpg"), plot = bp.stageone.xsi.standard)
+ggsave(here::here("results", "sims_two_trt_mis_stagetwo_xsi_standard_bp.jpg"), plot = bp.stagetwo.xsi.standard)
+
 
 #Two Stage: Trt Free Mis-specified
 sims_two_stage_trt_fr_mis <- readRDS(here::here("results", "sims_two_stage_trt_fr_mis.rds"))
@@ -887,6 +934,17 @@ ggsave(here::here("results", "sims_two_trt_fr_mis_stageone_psi_standard_bp.pdf")
 ggsave(here::here("results", "sims_two_trt_fr_mis_stagetwo_psi_standard_bp.pdf"), plot = bp.stagetwo.psi.standard)
 ggsave(here::here("results", "sims_two_trt_fr_mis_stageone_xsi_standard_bp.pdf"), plot = bp.stageone.xsi.standard)
 ggsave(here::here("results", "sims_two_trt_fr_mis_stagetwo_xsi_standard_bp.pdf"), plot = bp.stagetwo.xsi.standard)
+
+ggsave(here::here("results", "sims_two_trt_fr_mis_trtRate_bp.jpg"), plot = bp.twostage.trt)
+ggsave(here::here("results", "sims_two_trt_fr_mis_outcome_bp.jpg"), plot = bp.twostage.out)
+ggsave(here::here("results", "sims_two_trt_fr_mis_stageone_psi_bp.jpg"), plot = bp.stageone.psi)
+ggsave(here::here("results", "sims_two_trt_fr_mis_stagetwo_psi_bp.jpg"), plot = bp.stagetwo.psi)
+ggsave(here::here("results", "sims_two_trt_fr_mis_stageone_xsi_bp.jpg"), plot = bp.stageone.xsi)
+ggsave(here::here("results", "sims_two_trt_fr_mis_stagetwo_xsi_bp.jpg"), plot = bp.stagetwo.xsi)
+ggsave(here::here("results", "sims_two_trt_fr_mis_stageone_psi_standard_bp.jpg"), plot = bp.stageone.psi.standard)
+ggsave(here::here("results", "sims_two_trt_fr_mis_stagetwo_psi_standard_bp.jpg"), plot = bp.stagetwo.psi.standard)
+ggsave(here::here("results", "sims_two_trt_fr_mis_stageone_xsi_standard_bp.jpg"), plot = bp.stageone.xsi.standard)
+ggsave(here::here("results", "sims_two_trt_fr_mis_stagetwo_xsi_standard_bp.jpg"), plot = bp.stagetwo.xsi.standard)
 
 
 #Two Stage: Trt Free Mis-specified Variation 2
@@ -1111,6 +1169,16 @@ ggsave(here::here("results", "sims_two_trt_fr_mis_var_stagetwo_psi_standard_bp.p
 ggsave(here::here("results", "sims_two_trt_fr_mis_var_stageone_xsi_standard_bp.pdf"), plot = bp.stageone.xsi.standard)
 ggsave(here::here("results", "sims_two_trt_fr_mis_var_stagetwo_xsi_standard_bp.pdf"), plot = bp.stagetwo.xsi.standard)
 
+ggsave(here::here("results", "sims_two_trt_fr_mis_var_trtRate_bp.jpg"), plot = bp.twostage.trt)
+ggsave(here::here("results", "sims_two_trt_fr_mis_var_outcome_bp.jpg"), plot = bp.twostage.out)
+ggsave(here::here("results", "sims_two_trt_fr_mis_var_stageone_psi_bp.jpg"), plot = bp.stageone.psi)
+ggsave(here::here("results", "sims_two_trt_fr_mis_var_stagetwo_psi_bp.jpg"), plot = bp.stagetwo.psi)
+ggsave(here::here("results", "sims_two_trt_fr_mis_var_stageone_xsi_bp.jpg"), plot = bp.stageone.xsi)
+ggsave(here::here("results", "sims_two_trt_fr_mis_var_stagetwo_xsi_bp.jpg"), plot = bp.stagetwo.xsi)
+ggsave(here::here("results", "sims_two_trt_fr_mis_var_stageone_psi_standard_bp.jpg"), plot = bp.stageone.psi.standard)
+ggsave(here::here("results", "sims_two_trt_fr_mis_var_stagetwo_psi_standard_bp.jpg"), plot = bp.stagetwo.psi.standard)
+ggsave(here::here("results", "sims_two_trt_fr_mis_var_stageone_xsi_standard_bp.jpg"), plot = bp.stageone.xsi.standard)
+ggsave(here::here("results", "sims_two_trt_fr_mis_var_stagetwo_xsi_standard_bp.jpg"), plot = bp.stagetwo.xsi.standard)
 
 
 #***************************************************************************************************
@@ -1246,6 +1314,15 @@ ggsave(here::here("results", "sims_1b_extension_trt_mis_psi3_bp.pdf"), plot = bp
 ggsave(here::here("results", "sims_1b_extension_trt_mis_xsi0_bp.pdf"), plot = bp.xsi0)
 ggsave(here::here("results", "sims_1b_extension_trt_mis_xsi1_bp.pdf"), plot = bp.xsi1)
 
+ggsave(here::here("results", "sims_1b_extension_trt_mis_trtRate_bp.jpg"), plot = bp.trt)
+ggsave(here::here("results", "sims_1b_extension_trt_mis_outcome_bp.jpg"), plot = bp.out)
+ggsave(here::here("results", "sims_1b_extension_trt_mis_psi0_bp.jpg"), plot = bp.psi0)
+ggsave(here::here("results", "sims_1b_extension_trt_mis_psi1_bp.jpg"), plot = bp.psi1)
+ggsave(here::here("results", "sims_1b_extension_trt_mis_psi2_bp.jpg"), plot = bp.psi2)
+ggsave(here::here("results", "sims_1b_extension_trt_mis_psi3_bp.jpg"), plot = bp.psi3)
+ggsave(here::here("results", "sims_1b_extension_trt_mis_xsi0_bp.jpg"), plot = bp.xsi0)
+ggsave(here::here("results", "sims_1b_extension_trt_mis_xsi1_bp.jpg"), plot = bp.xsi1)
+
 
 #One Stage: ego-alter treatment-free model components mis-specified
 
@@ -1376,6 +1453,16 @@ ggsave(here::here("results", "sims_1b_extension_trt_fr_mis_psi2_bp.pdf"), plot =
 ggsave(here::here("results", "sims_1b_extension_trt_fr_mis_psi3_bp.pdf"), plot = bp.psi3)
 ggsave(here::here("results", "sims_1b_extension_trt_fr_mis_xsi0_bp.pdf"), plot = bp.xsi0)
 ggsave(here::here("results", "sims_1b_extension_trt_fr_mis_xsi1_bp.pdf"), plot = bp.xsi1)
+
+ggsave(here::here("results", "sims_1b_extension_trt_fr_mis_trtRate_bp.jpg"), plot = bp.trt)
+ggsave(here::here("results", "sims_1b_extension_trt_fr_mis_outcome_bp.jpg"), plot = bp.out)
+ggsave(here::here("results", "sims_1b_extension_trt_fr_mis_psi0_bp.jpg"), plot = bp.psi0)
+ggsave(here::here("results", "sims_1b_extension_trt_fr_mis_psi1_bp.jpg"), plot = bp.psi1)
+ggsave(here::here("results", "sims_1b_extension_trt_fr_mis_psi2_bp.jpg"), plot = bp.psi2)
+ggsave(here::here("results", "sims_1b_extension_trt_fr_mis_psi3_bp.jpg"), plot = bp.psi3)
+ggsave(here::here("results", "sims_1b_extension_trt_fr_mis_xsi0_bp.jpg"), plot = bp.xsi0)
+ggsave(here::here("results", "sims_1b_extension_trt_fr_mis_xsi1_bp.jpg"), plot = bp.xsi1)
+
 
 
 #***************************************************************************************************
@@ -1543,6 +1630,14 @@ ggsave(here::here("results", "sims_1b_1to5_psi3_bp.pdf"), plot = bp.psi3)
 ggsave(here::here("results", "sims_1b_1to5_xsi0_bp.pdf"), plot = bp.xsi0)
 ggsave(here::here("results", "sims_1b_1to5_xsi1_bp.pdf"), plot = bp.xsi1)
 
+ggsave(here::here("results", "sims_1b_1to5_trtRate_bp.jpg"), plot = bp.trt)
+ggsave(here::here("results", "sims_1b_1to5_outcome_bp.jpg"), plot = bp.out)
+ggsave(here::here("results", "sims_1b_1to5_psi0_bp.jpg"), plot = bp.psi0)
+ggsave(here::here("results", "sims_1b_1to5_psi1_bp.jpg"), plot = bp.psi1)
+ggsave(here::here("results", "sims_1b_1to5_psi2_bp.jpg"), plot = bp.psi2)
+ggsave(here::here("results", "sims_1b_1to5_psi3_bp.jpg"), plot = bp.psi3)
+ggsave(here::here("results", "sims_1b_1to5_xsi0_bp.jpg"), plot = bp.xsi0)
+ggsave(here::here("results", "sims_1b_1to5_xsi1_bp.jpg"), plot = bp.xsi1)
 
 
 #***************************************************************************************************
@@ -1711,5 +1806,13 @@ ggsave(here::here("results", "sims_1b_6to10_psi3_bp.pdf"), plot = bp.psi3)
 ggsave(here::here("results", "sims_1b_6to10_xsi0_bp.pdf"), plot = bp.xsi0)
 ggsave(here::here("results", "sims_1b_6to10_xsi1_bp.pdf"), plot = bp.xsi1)
 
+ggsave(here::here("results", "sims_1b_6to10_trtRate_bp.jpg"), plot = bp.trt)
+ggsave(here::here("results", "sims_1b_6to10_outcome_bp.jpg"), plot = bp.out)
+ggsave(here::here("results", "sims_1b_6to10_psi0_bp.jpg"), plot = bp.psi0)
+ggsave(here::here("results", "sims_1b_6to10_psi1_bp.jpg"), plot = bp.psi1)
+ggsave(here::here("results", "sims_1b_6to10_psi2_bp.jpg"), plot = bp.psi2)
+ggsave(here::here("results", "sims_1b_6to10_psi3_bp.jpg"), plot = bp.psi3)
+ggsave(here::here("results", "sims_1b_6to10_xsi0_bp.jpg"), plot = bp.xsi0)
+ggsave(here::here("results", "sims_1b_6to10_xsi1_bp.jpg"), plot = bp.xsi1)
 
 
