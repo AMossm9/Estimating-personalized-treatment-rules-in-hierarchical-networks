@@ -84,12 +84,12 @@ Psi.Dw$TruePsi <- rep(rep(c(1, 1, -1, -1.5), each=run), length(J.list))
 
 Psi.M1 <- bp_list$Psi.M1
 Psi.M1$phys.grps <- phys.dw1
-#"Each" is based off simulation runs. Needs to be entered manually
+#"Each" is based off simulation runs
 Psi.M1$TruePsi <- rep(rep(c(1, 1, -1, -1.5), each=run), length(J.list))
 
 Psi.M2 <- bp_list$Psi.M2
 Psi.M2$phys.grps <- phys.dw2
-#"Each" is based off simulation runs. Needs to be entered manually
+#"Each" is based off simulation runs
 Psi.M2$TruePsi <- rep(rep(c(1, 1, -1, -1.5), each=run), length(J.list))
 
 Psi.M3 <- bp_list$Psi.M3
@@ -98,17 +98,17 @@ Psi.M3$TruePsi <- rep(rep(c(1, 1, -1, -1.5), each=run), length(J.list))
 
 Xsi.Dw <- bp_list$Xsi.Dw
 Xsi.Dw$phys.grps <- phys.dw.xsi
-#"Each" is based off simulation runs. Needs to be entered manually
+#"Each" is based off simulation runs
 Xsi.Dw$TrueXsi <- rep(rep(c(1, 1), each=run), length(J.list))
 
 Xsi.M1 <- bp_list$Xsi.M1
 Xsi.M1$phys.grps <- phys.dw.xsi
-#"Each" is based off simulation runs. Needs to be entered manually
+#"Each" is based off simulation runs
 Xsi.M1$TrueXsi <- rep(rep(c(1, 1), each=run), length(J.list))
 
 Xsi.M2 <- bp_list$Xsi.M2
 Xsi.M2$phys.grps <- phys.dw.xsi
-#"Each" is based off simulation runs. Needs to be entered manually
+#"Each" is based off simulation runs
 Xsi.M2$TrueXsi <- rep(rep(c(1, 1), each=run), length(J.list))
 
 Xsi.M3 <- bp_list$Xsi.M3
@@ -140,112 +140,3 @@ outputs <- list(
 
 saveRDS(outputs, "results/one_stage_trt_and_trt_fr_mis.rds")
 
-bp.trt <- ggplot(AOpts.df, aes(x=phys.grps, y=TrtRate, fill=Method)) + geom_boxplot()
-bp.out <- ggplot(YOpts.df, aes(x=phys.grps, y=Outcome, fill=Method)) + geom_boxplot()
-bp.M1 <- ggplot(Psi.M1, aes(x=PsiParameter, y=Estimate, fill=phys.grps)) + geom_boxplot()
-bp.M2 <- ggplot(Psi.M2, aes(x=PsiParameter, y=Estimate, fill=phys.grps)) + geom_boxplot()
-bp.M3 <- ggplot(Psi.M3, aes(x=PsiParameter, y=Estimate, fill=phys.grps)) + geom_boxplot()
-
-bp.trt + labs(y="Optimal treatment rate", x="No. of physician groups") + scale_fill_brewer(palette = "Greys") + theme_classic()
-bp.out + labs(y="Optimal outcome", x="No. of physician groups") + scale_fill_brewer(palette = "Greys") + theme_classic()
-
-bp.M1 + labs(y="Estimate under ME2", x="Blip parameter") + scale_fill_brewer(palette = "Greys") + theme_classic()
-bp.M2 + labs(y="Estimate under ME3", x="Blip parameter") + scale_fill_brewer(palette = "Greys") + theme_classic()
-bp.M3 + labs(y="Estimate under ME4", x="Blip parameter") + scale_fill_brewer(palette = "Greys") + theme_classic()
-
-bp.M1 + labs(y="Estimate under ME2", x="Spillover parameter") + scale_fill_brewer(palette = "Greys") + theme_classic()
-bp.M2 + labs(y="Estimate under ME3", x="Spillover parameter") + scale_fill_brewer(palette = "Greys") + theme_classic()
-bp.M3 + labs(y="Estimate under ME4", x="Spillover parameter") + scale_fill_brewer(palette = "Greys") + theme_classic()
-
-plotdata1 <- na.omit(AOpts.df) %>%
-  group_by(Method, phys.grps) %>%
-  summarize(n = n(),
-         median = median(TrtRate),
-         mean = mean(TrtRate),
-         sd = sd(TrtRate),
-         empse = sqrt((sum((TrtRate-mean(TrtRate))^2))/(n-1)),
-         .groups="keep")
-
-plotdata1
-
-plotdata2 <- na.omit(YOpts.df) %>%
-  group_by(Method, phys.grps) %>%
-  summarize(n = n(),
-         median = median(Outcome),
-         mean = mean(Outcome),
-         sd = sd(Outcome),
-         empse = sqrt((sum((Outcome-mean(Outcome))^2))/(n-1)),
-         .groups="keep")
-
-plotdata2
-
-plotdata3 <- na.omit(Psi.M2) %>%
-  group_by(PsiParameter, phys.grps) %>%
-  summarize(n = n(),
-         median = median(Estimate),
-         mean = mean(Estimate),
-         empse = sqrt((sum((Estimate-mean(Estimate))^2))/(n-1)),
-         mse = (sum((Estimate-TruePsi)^2))/n,
-         .groups="keep")
-
-plotdata3
-
-plotdata4 <- na.omit(Psi.M3) %>%
-  group_by(PsiParameter, phys.grps) %>%
-  summarize(n = n(),
-         median = median(Estimate),
-         mean = mean(Estimate),
-         empse = sqrt((sum((Estimate-mean(Estimate))^2))/(n-1)),
-         mse = (sum((Estimate-TruePsi)^2))/n,
-         .groups="keep")
-
-plotdata4
-
-plotdata5 <- na.omit(Xsi.M1) %>%
-  group_by(XsiParameter, phys.grps) %>%
-  summarize(n = n(),
-         median = median(Estimate),
-         mean = mean(Estimate),
-         empse = sqrt((sum((Estimate-mean(Estimate))^2))/(n-1)),
-         mse = (sum((Estimate-TrueXsi)^2))/n,
-         .groups="keep")
-
-plotdata5
-
-plotdata6 <- na.omit(Xsi.M2) %>%
-  group_by(XsiParameter, phys.grps) %>%
-  summarize(n = n(),
-         median = median(Estimate),
-         mean = mean(Estimate),
-         empse = sqrt((sum((Estimate-mean(Estimate))^2))/(n-1)),
-         mse = (sum((Estimate-TrueXsi)^2))/n,
-         .groups="keep")
-
-plotdata6
-
-plotdata7 <- na.omit(Xsi.M3) %>%
-  group_by(XsiParameter, phys.grps) %>%
-  summarize(n = n(),
-         median = median(Estimate),
-         mean = mean(Estimate),
-         empse = sqrt((sum((Estimate-mean(Estimate))^2))/(n-1)),
-         mse = (sum((Estimate-TrueXsi)^2))/n,
-         .groups="keep")
-
-plotdata7
-
-pd <- position_dodge(0.2)
-ggplot(plotdata2, 
-       aes(x = factor(phys.grps, 
-                      labels = c("2",
-                                 "3",
-                                 "4")), 
-            y = median, group=Method, color=Method)) +
-     geom_point(position=pd, 
-                size=3) +
-     geom_line(aes(linetype=Method)) +
-     scale_fill_brewer(palette = "Pastel1") +
-     theme_minimal() +
-     labs(x = "No. of Physician Groups", 
-          y = "Median optimal outcome",
-          color = "Method")

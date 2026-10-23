@@ -1,4 +1,6 @@
 #install.packages("nhanesA")
+rm(list = ls())
+
 library(nhanesA)
 library(dplyr)
 library(lme4)
@@ -644,7 +646,19 @@ for(i in 1:num_sims){
   
   num_patients_original_test[i,1] <- main_analysis(seed+1, df_cleaned, I, J, n)$num_original
   
-  dwols_res <- run_dwols_intf(df_dwols)
+  #dwols_res <- run_dwols_intf(df_dwols)
+
+  dwols_res <- tryCatch(
+        run_dwols_intf(df_dwols),
+        error = function(e) {
+            message(
+                paste("Iteration", i, "failed:", conditionMessage(e))
+            )
+            NULL
+        }
+    )
+
+    if(is.null(dwols_res)) next
   
   blip_stage1 <- c(dwols_res$psi[[1]][1], dwols_res$psi[[1]][2], dwols_res$psi[[1]][3])
   
@@ -702,7 +716,17 @@ for(i in 1:num_sims){
   
   #predicted_outcomes[i,2] <- median(predict(dwols_res, df_test))
   
-  dwols_res_wthn <- run_dwols_intf_wthn(df_dwols)
+  dwols_res_wthn <- tryCatch(
+        run_dwols_intf_wthn(df_dwols),
+        error = function(e) {
+            message(
+                paste("Iteration", i, "failed:", conditionMessage(e))
+            )
+            NULL
+        }
+    )
+
+    if(is.null(dwols_res_wthn)) next
   
   blip_stage1_wthn <- c(dwols_res_wthn$psi[[1]][1], dwols_res_wthn$psi[[1]][2], dwols_res_wthn$psi[[1]][3])
   
@@ -777,7 +801,7 @@ outputs_btwn_and_wthn <- list(
   nhanes_intf_btwn_and_wthn_regrets <- regrets
 )
 
-saveRDS(outputs_btwn_and_wthn, "results/nhanes_intf_btwn_and_wthn")
+saveRDS(outputs_btwn_and_wthn, "results/nhanes_intf_btwn_and_wthn.rds")
 
 outputs_wthn <- list(
 
@@ -789,6 +813,6 @@ outputs_wthn <- list(
   nhanes_intf_wthn_regrets <- regrets
 )
 
-saveRDS(outputs_wthn, "results/nhanes_intf_wthn")
+saveRDS(outputs_wthn, "results/nhanes_intf_wthn.rds")
 #*************************************************************************************************************************************
 

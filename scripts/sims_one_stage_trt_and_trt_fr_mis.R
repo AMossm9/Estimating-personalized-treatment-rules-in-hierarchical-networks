@@ -102,7 +102,6 @@ data.gen <- function(seed, I, J, n, tau3, tau2, sigma2, alpha.0, alpha.1, alpha.
         A.ijk <- rbinom(1, 1, prob.trt)
 
         #Indicators for whether an individual receives treatment or not
-        #Not sure if we need this later on
         trt.indicator <- ifelse(A.ijk == 1, 1, -1)
 
         #Store data
@@ -136,9 +135,6 @@ data.gen <- function(seed, I, J, n, tau3, tau2, sigma2, alpha.0, alpha.1, alpha.
 
   #IMPORTANT: now, logit.p.fixed and logit.p are different from what we defined earlier
   #logit.p.fixed is the ESTIMATED logit of probability of treatment, integrating out the random effects of mod.2
-  #Refer to stackexchange for why we set re.form=NA
-  #Integrating out the random effects seems to be consistent with how the joint propensity score with random effects
-  #is defined in the Perez-Heydrich et al. (2014) paper
   #logit.p is the ESTIMATED logit if probability of treatment using mod.1
   trt.data$logit.p.fixed <- predict(mod.2, trt.data, type='response', re.form=NULL)
   
@@ -435,12 +431,6 @@ group.propensity <- function(trt.data, I, J, n, tau3, tau2, rand.sd){
 
       #Calculate network absolute value Weights for group propensity score
       w.L2 <- c(w.L2, rep(abs(ego.A-ego.logit)*prod(abs(alter.A-alter.logit)), nrow(df.ego)))
-
-      #IMPORTANT:
-      #Refer to these links and the formula (3) in Perez-Heydrich et al. (2014) Paper to understand why we integrated out random effects:
-      #using re.form=NA
-      #https://stackoverflow.com/questions/36153245/non-finite-function-value-error-in-integrate-function-in-r
-      #https://stats.stackexchange.com/questions/308927/re-form-specifying-one-random-effect-but-not-the-other
 
       #Weights that will account for within-group neighbours only
       #Check number of within-group neighbours

@@ -117,7 +117,6 @@ data.gen <- function(seed, I, J, n, tau3, tau2, sigma2, alpha.0, alpha.1, alpha.
         A.ijk.2 <- rbinom(1, 1, prob.trt.2)
 
         #Indicators for whether an individual receives treatment or not
-        #Not sure if we need this later on
         trt.indicator.1 <- ifelse(A.ijk.1 == 1, 1, -1)
         trt.indicator.2 <- ifelse(A.ijk.2 == 1, 1, -1)
 
@@ -158,9 +157,6 @@ data.gen <- function(seed, I, J, n, tau3, tau2, sigma2, alpha.0, alpha.1, alpha.
 
   #IMPORTANT: now, logit.p.fixed and logit.p are different from what we defined earlier
   #logit.p.fixed.1 and logit.p.fixed.2 are the ESTIMATED logits of probability of treatment, integrating out the random effects of mod.2 and mod.4, respectively
-  #Refer to stackexchange for why we set re.form=NA
-  #Integrating out the random effects seems to be consistent with how the joint propensity score with random effects
-  #is defined in the Perez-Heydrich et al. (2014) paper
   #logit.p.1 and logit.p.2 are the ESTIMATED logits of probability of treatment using mod.1 and mod.3, respectively
   trt.data$logit.p.fixed.1 <- predict(mod.2, trt.data, type='response', re.form=NULL)
   
@@ -535,12 +531,6 @@ group.propensity <- function(trt.data, I, J, n, tau3, tau2, rand.sd.1, rand.sd.2
       w.L2.1 <- c(w.L2.1, rep(abs(ego.A.1-ego.logit.1)*prod(abs(alter.A.1-alter.logit.1)), nrow(df.ego)))
       w.L2.2 <- c(w.L2.2, rep(abs(ego.A.2-ego.logit.2)*prod(abs(alter.A.2-alter.logit.2)), nrow(df.ego)))
 
-      #IMPORTANT:
-      #Refer to these links and the formula (3) in Perez-Heydrich et al. (2014) Paper to understand why we integrated out random effects:
-      #using re.form=NA
-      #https://stackoverflow.com/questions/36153245/non-finite-function-value-error-in-integrate-function-in-r
-      #https://stats.stackexchange.com/questions/308927/re-form-specifying-one-random-effect-but-not-the-other
-
       #Weights that will account for within-group neighbours only
       #Check number of within-group neighbours
       #If > 0, take product of ego and within-group alters' propensities from model with mixed effects
@@ -750,15 +740,6 @@ main.fun <- function(I, J, n, sam.size, tau3, tau2, sigma2, alpha.0, alpha.1, al
   return(ego.df)
 }
 
-#Test out a few different datasets
-ego.df1 <- main.fun(10, 4, 5, 2, 1, 1, 1, -1, 1, 0.5, 1, 1, -1, -1.5, 1000)
-#sum(abs(ego.df1$AOpt.ijk-ego.df1$A.ijk))/nrow(ego.df1)
-
-ego.df2 <- main.fun(10, 5, 5, 2, 1, 1, 1, -1, 1, 0.5, 1, 1, -1, -1.5, 1000)
-#sum(abs(ego.df2$AOpt.ijk-ego.df2$A.ijk))/nrow(ego.df2)
-
-ego.df3 <- main.fun(10, 6, 5, 2, 1, 1, 1, -1, 1, 0.5, 1, 1, -1, -1.5, 1000)
-#sum(abs(ego.df3$AOpt.ijk-ego.df3$A.ijk))/nrow(ego.df3)
 
 #**********DWOLS IMPLEMENTATION WHERE TREATMENT MODEL IS MIS-SPECIFIED WITH NO CLUSTER-LEVEL COVARIATE********** 
 
