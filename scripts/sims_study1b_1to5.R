@@ -615,7 +615,7 @@ main.fun <- function(I, J, n, sam.size, tau3, tau2, sigma2, alpha.0, alpha.1, al
 #ego.df3 <- main.fun(10, 6, 140, 20, 1, 1, 1, -1, 1, 0.5, 1, 1, -1, -1.5, 1000)
 #sum(abs(ego.df3$AOpt.ijk-ego.df3$A.ijk))/nrow(ego.df3)
 
-#**********DWOLS IMPLEMENTATION WHERE TREATMENT MODEL IS MIS-SPECIFIED VIA OMISSION OF NON-LINEAR TERM IN X.ijk**********
+#**********DWOLS IMPLEMENTATION WHERE TREATMENT MODEL IS CORRECTLY SPECIFIED**********
 
 #METHOD #1: ONLY ACCOUNTS FOR WITHIN-GROUP INTERFERENCE, USES WITHIN-GROUP WEIGHTS
 
