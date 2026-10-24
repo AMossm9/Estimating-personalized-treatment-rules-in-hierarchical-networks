@@ -43,7 +43,7 @@ tailoring_vars <- c("GMI", "GMI*Alter", "GMI*Housing")
 
 blip_results_btwn_wthn <- data.frame(tailoring_vars, stage_1_blips_btwn_wthn, stage_2_blips_btwn_wthn)
 
-names(blip_results_btwn_wthn) <- c("Tailoring Variable", "Stage 1" "Stage 2")
+names(blip_results_btwn_wthn) <- c("Tailoring Variable", "Stage 1", "Stage 2")
 
 spillover_vals_btwn_wthn <- c(mean(spillovers_btwn_wthn[,1], na.rm=TRUE), mean(spillovers_btwn_wthn[,2], na.rm=TRUE))
 
@@ -59,9 +59,9 @@ write.csv(spillover_results_btwn_wthn, here::here("results", "nhanes_spillover_b
 
 #************************************************************************************************
 
-blips_wthn <- nhanes_wthn[[6]]
+blips_wthn <- nhanes_wthn[[2]]
 
-spillovers_wthn <- nhanes_wthn[[7]]
+spillovers_wthn <- nhanes_wthn[[3]]
 
 stage_1_blips_wthn <- c(mean(blips_wthn[,1], na.rm=TRUE), mean(blips_wthn[,2], na.rm=TRUE), mean(blips_wthn[,3], na.rm=TRUE))
 
@@ -71,7 +71,7 @@ tailoring_vars <- c("GMI", "GMI*Alter", "GMI*Housing")
 
 blip_results_wthn <- data.frame(tailoring_vars, stage_1_blips_wthn, stage_2_blips_wthn)
 
-names(blip_results_wthn) <- c("Tailoring Variable", "Stage 1" "Stage 2")
+names(blip_results_wthn) <- c("Tailoring Variable", "Stage 1", "Stage 2")
 
 spillover_vals_wthn <- c(mean(spillovers_wthn[,1], na.rm=TRUE), mean(spillovers_wthn[,2], na.rm=TRUE))
 

@@ -805,12 +805,12 @@ saveRDS(outputs_btwn_and_wthn, "results/nhanes_intf_btwn_and_wthn.rds")
 
 outputs_wthn <- list(
 
-  nhanes_intf_wthn_AOpts_test <- AOpts_test,
-  nhanes_intf_wthn_blips <- blips,
+  nhanes_intf_wthn_AOpts_test <- AOpts_test_wthn,
+  nhanes_intf_wthn_blips <- blips_wthn,
 
-  nhanes_intf_wthn_spillovers <- spillovers,
+  nhanes_intf_wthn_spillovers <- spillovers_wthn,
 
-  nhanes_intf_wthn_regrets <- regrets
+  nhanes_intf_wthn_regrets <- regrets_wthn
 )
 
 saveRDS(outputs_wthn, "results/nhanes_intf_wthn.rds")
