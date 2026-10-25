@@ -4,7 +4,7 @@ interference using dynamic weighted ordinary least squares"
 This repository contains all coding scripts to reproduce the simulation results, figures, and table entries in the manuscript "personalized treatment rules in hierarchical networks with
 interference using dynamic weighted ordinary least squares" for the International Journal of Biostatistics.
 
-Analyses were conducted using R version 4.5.2 and package dependencies are managed using the 'renv' package for reproducibility.
+Analyses were conducted using R version 4.6.1 and package dependencies are managed using the 'renv' package for reproducibility.
 
 Required packages:
 - lme4 
