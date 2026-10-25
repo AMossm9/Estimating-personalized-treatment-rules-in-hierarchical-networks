@@ -28,7 +28,7 @@ library(dplyr)
 
 one_stage_trt_mis <- readRDS(here::here("results", "one_stage_trt_mis.rds"))
 
-names(one_stage_trt_mis) <- c("AOpts_one_trt_mis", "YOpts_one_trt_mis", "Regret_one_trt_mis", "Psi_M1_one_trt_mis", "Psi_M2_one_trt_mis", "Psi_M3_one_trt_mis", "Xsi_M1_one_trt_mis", "Xsi_M2_one_trt_mis", "Xsi_M3_one_trt_mis", "Min_alters_one_trt_mis", "Max_alters_one_trt_mis", "Mean_alters_one_trt_mis", "Median_alters_one_trt_mis")
+names(one_stage_trt_mis) <- c("AOpts_one_trt_mis", "YOpts_one_trt_mis", "Regret_one_trt_mis", "Psi_Dw_one_trt_mis", "Psi_M1_one_trt_mis", "Psi_M2_one_trt_mis", "Psi_M3_one_trt_mis", "Xsi_Dw_one_trt_mis", "Xsi_M1_one_trt_mis", "Xsi_M2_one_trt_mis", "Xsi_M3_one_trt_mis", "Min_alters_one_trt_mis", "Max_alters_one_trt_mis", "Mean_alters_one_trt_mis", "Median_alters_one_trt_mis")
 
 AOpts.df <- one_stage_trt_mis$AOpts_one_trt_mis
 YOpts.df <- one_stage_trt_mis$YOpts_one_trt_mis
@@ -144,7 +144,7 @@ ggsave(here::here("results", "sims_one_trt_mis_xsi1_bp.jpg"), plot = bp.xsi1)
 
 one_stage_trt_fr_mis <- readRDS(here::here("results", "one_stage_trt_fr_mis.rds"))
 
-names(one_stage_trt_fr_mis) <- c("AOpts_one_trt_fr_mis", "YOpts_one_trt_fr_mis", "Regret_one_trt_fr_mis", "Psi_M1_one_trt_fr_mis", "Psi_M2_one_trt_fr_mis", "Psi_M3_one_trt_fr_mis", "Xsi_M1_one_trt_fr_mis", "Xsi_M2_one_trt_fr_mis", "Xsi_M3_one_trt_fr_mis", "Min_alters_one_trt_fr_mis", "Max_alters_one_trt_fr_mis", "Mean_alters_one_trt_fr_mis", "Median_alters_one_trt_fr_mis")
+names(one_stage_trt_fr_mis) <- c("AOpts_one_trt_fr_mis", "YOpts_one_trt_fr_mis", "Regret_one_trt_fr_mis", "Psi_Dw_one_trt_fr_mis", "Psi_M1_one_trt_fr_mis", "Psi_M2_one_trt_fr_mis", "Psi_M3_one_trt_fr_mis", "Xsi_Dw_one_trt_fr_mis", "Xsi_M1_one_trt_fr_mis", "Xsi_M2_one_trt_fr_mis", "Xsi_M3_one_trt_fr_mis", "Min_alters_one_trt_fr_mis", "Max_alters_one_trt_fr_mis", "Mean_alters_one_trt_fr_mis", "Median_alters_one_trt_fr_mis")
 
 AOpts.df <- one_stage_trt_fr_mis$AOpts_one_trt_fr_mis
 YOpts.df <- one_stage_trt_fr_mis$YOpts_one_trt_fr_mis
@@ -257,7 +257,7 @@ ggsave(here::here("results", "sims_one_trt_fr_mis_xsi1_bp.jpg"), plot = bp.xsi1)
 
 one_stage_trt_and_trt_fr_mis <- readRDS(here::here("results", "one_stage_trt_and_trt_fr_mis.rds"))
 
-names(one_stage_trt_and_trt_fr_mis) <- c("AOpts_one_trt_and_trt_fr_mis", "YOpts_one_trt_and_trt_fr_mis", "Regret_one_trt_and_trt_fr_mis", "Psi_M1_one_trt_and_trt_fr_mis", "Psi_M2_one_trt_and_trt_fr_mis", "Psi_M3_one_trt_and_trt_fr_mis", "Xsi_M1_one_trt_and_trt_fr_mis", "Xsi_M2_one_trt_and_trt_fr_mis", "Xsi_M3_one_trt_and_trt_fr_mis", "Min_alters_one_trt_and_trt_fr_mis", "Max_alters_one_trt_and_trt_fr_mis", "Mean_alters_one_trt_and_trt_fr_mis", "Median_alters_one_trt_and_trt_fr_mis")
+names(one_stage_trt_and_trt_fr_mis) <- c("AOpts_one_trt_and_trt_fr_mis", "YOpts_one_trt_and_trt_fr_mis", "Regret_one_trt_and_trt_fr_mis", "Psi_Dw_one_trt_and_trt_fr_mis", "Psi_M1_one_trt_and_trt_fr_mis", "Psi_M2_one_trt_and_trt_fr_mis", "Psi_M3_one_trt_and_trt_fr_mis", "Xsi_Dw_one_trt_and_trt_fr_mis", "Xsi_M1_one_trt_and_trt_fr_mis", "Xsi_M2_one_trt_and_trt_fr_mis", "Xsi_M3_one_trt_and_trt_fr_mis", "Min_alters_one_trt_and_trt_fr_mis", "Max_alters_one_trt_and_trt_fr_mis", "Mean_alters_one_trt_and_trt_fr_mis", "Median_alters_one_trt_and_trt_fr_mis")
 
 AOpts.df <- one_stage_trt_and_trt_fr_mis$AOpts_one_trt_and_trt_fr_mis
 YOpts.df <- one_stage_trt_and_trt_fr_mis$YOpts_one_trt_and_trt_fr_mis
@@ -371,7 +371,7 @@ ggsave(here::here("results", "sims_one_trt_and_trt_fr_mis_xsi1_bp.jpg"), plot = 
 
 one_stage_trt_and_trt_fr_correct <- readRDS(here::here("results", "one_stage_trt_and_trt_fr_correct.rds"))
 
-names(one_stage_trt_and_trt_fr_correct) <- c("AOpts_one_trt_and_trt_fr_correct", "YOpts_one_trt_and_trt_fr_correct", "Regret_one_trt_and_trt_fr_correct", "Psi_M1_one_trt_and_trt_fr_correct", "Psi_M2_one_trt_and_trt_fr_correct", "Psi_M3_one_trt_and_trt_fr_correct", "Xsi_M1_one_trt_and_trt_fr_correct", "Xsi_M2_one_trt_and_trt_fr_correct", "Xsi_M3_one_trt_and_trt_fr_correct", "Min_alters_one_trt_and_trt_fr_correct", "Max_alters_one_trt_and_trt_fr_correct", "Mean_alters_one_trt_and_trt_fr_correct", "Median_alters_one_trt_and_trt_fr_correct")
+names(one_stage_trt_and_trt_fr_correct) <- c("AOpts_one_trt_and_trt_fr_correct", "YOpts_one_trt_and_trt_fr_correct", "Regret_one_trt_and_trt_fr_correct", "Psi_Dw_one_trt_and_trt_fr_correct", "Psi_M1_one_trt_and_trt_fr_correct", "Psi_M2_one_trt_and_trt_fr_correct", "Psi_M3_one_trt_and_trt_fr_correct", "Xsi_Dw_one_trt_and_trt_fr_correct", "Xsi_M1_one_trt_and_trt_fr_correct", "Xsi_M2_one_trt_and_trt_fr_correct", "Xsi_M3_one_trt_and_trt_fr_correct", "Min_alters_one_trt_and_trt_fr_correct", "Max_alters_one_trt_and_trt_fr_correct", "Mean_alters_one_trt_and_trt_fr_correct", "Median_alters_one_trt_and_trt_fr_correct")
 
 AOpts.df <- one_stage_trt_and_trt_fr_correct$AOpts_one_trt_and_trt_fr_correct
 YOpts.df <- one_stage_trt_and_trt_fr_correct$YOpts_one_trt_and_trt_fr_correct
